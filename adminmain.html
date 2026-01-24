@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { background-color: #f4f4f4; font-family: Arial, sans-serif; margin:0; padding:20px }
+        .admin-container { max-width:600px; margin:0 auto; background:#fff; padding:20px; box-shadow:0 6px 24px rgba(0,0,0,.08); border-radius:8px }
+        .admin-button { display:block; width:100%; padding:10px; margin:10px 0; background:#333; color:#fff; border:none; border-radius:4px; cursor:pointer; font-size:16px }
+        .admin-button:hover { background:#555 }
+        /* Modal styles (simple, designed to match admin look) */
+        @keyframes modalIn { from { opacity: 0; transform: translateY(6px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes shakeX { 0% { transform: translateX(0) } 20% { transform: translateX(-6px) } 40% { transform: translateX(6px) } 60% { transform: translateX(-4px) } 80% { transform: translateX(2px) } 100% { transform: translateX(0) } }
+
+        #admin-login-modal { display:none; position:fixed; inset:0; z-index:9999; align-items:center; justify-content:center }
+        #admin-login-modal.open { display:flex }
+        #admin-login-modal .backdrop { position:absolute; inset:0; background:rgba(0,0,0,0.45); backdrop-filter: blur(1px) }
+        #admin-login-modal .panel { position:relative; z-index:1; background:#fff; border-radius:10px; padding:20px; width:420px; max-width:92%; box-shadow:0 12px 36px rgba(0,0,0,0.25); transform-origin:center center }
+        #admin-login-modal.open .panel { animation: modalIn 180ms cubic-bezier(.2,.9,.2,1) both }
+        #admin-login-modal .panel.shake { animation: shakeX 360ms ease both }
+        #admin-login-modal h2 { margin:0 0 8px 0; font-size:18px }
+        #admin-login-modal .error { color:#900; margin-bottom:8px; display:none }
+        #admin-login-modal input[type="text"], #admin-login-modal input[type="password"] { width:100%; padding:8px; margin-bottom:10px; border:1px solid #eee; border-radius:6px; transition:box-shadow .12s, border-color .12s }
+        #admin-login-modal input:focus { outline: none; box-shadow: 0 0 0 3px rgba(51,51,51,0.06); border-color:#ccc }
+        #admin-login-modal .actions { text-align:right }
+        #admin-login-modal .btn { padding:8px 12px; border-radius:6px; border:none; transition:transform .12s ease, background .12s ease, opacity .12s }
+        #admin-login-modal .btn:hover { transform: translateY(-3px) }
+        #admin-login-modal .btn:active { transform: translateY(0) }
+        #admin-login-modal .btn.primary { background:#222; color:#fff; box-shadow: 0 6px 18px rgba(34,34,34,0.12) }
+        #admin-login-modal .btn[disabled] { opacity: .6; transform: none }
+        #admin-login-modal .remember { display:flex; align-items:center; gap:8px; margin-bottom:10px }
+    </style>
+</head>
+<body>
+<header>
+    <div style="background-image:url('1768522359007(1)-copy.jpeg');height:200px;background-size:cover;background-position:center;margin-bottom:20px;display:flex;align-items:center;justify-content:center;color:#fff">
+        <h1 style="font-size:36px;text-shadow:2px 2px 4px rgba(0,0,0,0.6);margin:0">Admin Main Page</h1>
+    </div>
+
+    <div class="admin-container">
+        <button class="admin-button" data-target="admin.html">Go to Admin Upload Page</button>
+        <button class="admin-button" data-target="main_page.html">Go to Main Page</button>
+        <button class="admin-button" data-target="about.html">Go to About Page</button>
+        <button class="admin-button" data-target="flash.html">Go to Flash Art Page</button>
+    </div>
+
+    <!-- Modal inserted by script -->
+        <div id="admin-login-modal" role="dialog" aria-modal="true" aria-labelledby="admin-login-title" aria-describedby="admin-login-error">
+            <div class="backdrop" data-action="close"></div>
+            <div class="panel" role="document">
+                <h2 id="admin-login-title">Admin login</h2>
+                <div id="admin-login-error" class="error" aria-live="polite"></div>
+        <label>Username</label>
+        <input id="admin-login-user" type="text" autocomplete="username" />
+        <label>Password</label>
+        <input id="admin-login-pass" type="password" autocomplete="current-password" />
+        <div class="remember"><input id="admin-login-remember" type="checkbox" /><label for="admin-login-remember">Remember username</label></div>
+        <div class="actions">
+          <button id="admin-login-cancel" class="btn">Cancel</button>
+          <button id="admin-login-submit" class="btn primary">Sign in</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+        // Modal behavior + remember-username persistence + accessibility focus trap
+        const modal = document.getElementById('admin-login-modal');
+        const errDiv = document.getElementById('admin-login-error');
+        const userInput = document.getElementById('admin-login-user');
+        const passInput = document.getElementById('admin-login-pass');
+        const rememberChk = document.getElementById('admin-login-remember');
+        const submitBtn = document.getElementById('admin-login-submit');
+        const cancelBtn = document.getElementById('admin-login-cancel');
+        const backdrop = modal.querySelector('.backdrop');
+        let modalTarget = null;
+        let previouslyFocused = null;
+
+        // Utility: find focusable elements inside modal
+        function getFocusableElements(container) {
+            return Array.from(container.querySelectorAll('a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'))
+                .filter(el => !el.hasAttribute('disabled') && el.getAttribute('aria-hidden') !== 'true');
+        }
+
+        function trapTabKey(e) {
+            if (e.key !== 'Tab') return;
+            const focusables = getFocusableElements(modal.querySelector('.panel'));
+            if (focusables.length === 0) { e.preventDefault(); return; }
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+            if (e.shiftKey) {
+                if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+            } else {
+                if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+            }
+        }
+
+        function onKeyDown(e) {
+            if (e.key === 'Escape') { e.preventDefault(); hideModal(); }
+            trapTabKey(e);
+        }
+
+        function showModal(target) {
+                modalTarget = target;
+                errDiv.style.display = 'none';
+                errDiv.textContent = '';
+                const saved = localStorage.getItem('admin_username') || '';
+                userInput.value = saved;
+                rememberChk.checked = !!saved;
+                passInput.value = '';
+                // store previously focused element to restore later
+                previouslyFocused = document.activeElement;
+                // open modal with animation class
+                modal.classList.add('open');
+                const panel = modal.querySelector('.panel');
+                if (panel) panel.classList.remove('shake');
+                // attach keyboard handlers for focus trap and escape
+                document.addEventListener('keydown', onKeyDown);
+                // focus first input after animation
+                setTimeout(() => userInput.focus(), 120);
+        }
+        function hideModal() {
+                modal.classList.remove('open');
+                modalTarget = null;
+                // remove keyboard handlers and restore focus
+                document.removeEventListener('keydown', onKeyDown);
+                try { if (previouslyFocused && previouslyFocused.focus) previouslyFocused.focus(); } catch (e) {}
+        }
+
+        async function doLoginAndNavigate() {
+            const user = String(userInput.value || '').trim();
+            const pass = String(passInput.value || '');
+            if (!user || !pass) {
+                errDiv.textContent = 'Username and password are required';
+                errDiv.style.display = 'block';
+                return;
+            }
+            submitBtn.disabled = true;
+            const apiBase = (window.apiBase && String(window.apiBase)) || 'http://127.0.0.1:15500';
+            try {
+                const res = await fetch(apiBase.replace(/\/$/, '') + '/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({ user, pass })
+                });
+                if (res.ok) {
+                    // persist username if checkbox set
+                    if (rememberChk.checked) localStorage.setItem('admin_username', user);
+                    else localStorage.removeItem('admin_username');
+                    // preserve target before closing modal
+                    const finalTarget = modalTarget;
+                    hideModal();
+                    // Navigate to the upload server (apiBase) to avoid navigating relative to whatever static file server is used
+                    const apiBase = (window.apiBase && String(window.apiBase)) || 'http://127.0.0.1:15500';
+                    function mapTargetToPath(t) {
+                        if (!t) return '/';
+                        if (/^https?:\/\//i.test(t)) return t; // absolute
+                        const s = t.toString().trim();
+                        if (s === 'admin.html' || s === 'admin') return '/admin';
+                        if (s === 'adminmain.html' || s === 'adminmain') return '/adminmain';
+                        // default: serve the named file at root
+                        return '/' + s.replace(/^\//, '');
+                    }
+                    const mapped = mapTargetToPath(finalTarget);
+                    const navigateUrl = /^https?:\/\//i.test(mapped) ? mapped : apiBase.replace(/\/$/, '') + mapped;
+                    window.location.href = navigateUrl;
+                    return;
+                }
+                const text = await res.text().catch(() => '');
+                let msg = res.statusText || 'Login failed';
+                try { const j = JSON.parse(text || '{}'); if (j && j.error) msg = j.error; } catch (e) { if (text) msg = text; }
+                errDiv.textContent = msg + ' (if local HTTP, set COOKIE_SECURE=false)';
+                errDiv.style.display = 'block';
+                // signal error to assistive tech
+                errDiv.setAttribute('role', 'alert');
+                setTimeout(() => errDiv.removeAttribute('role'), 1200);
+                // shake panel to draw attention to error
+                const panel = modal.querySelector('.panel');
+                if (panel) {
+                    panel.classList.remove('shake');
+                    // trigger reflow to restart animation
+                    void panel.offsetWidth;
+                    panel.classList.add('shake');
+                    setTimeout(() => panel.classList.remove('shake'), 500);
+                }
+            } catch (e) {
+                errDiv.textContent = 'Network error: ' + (e && e.message);
+                errDiv.style.display = 'block';
+                const panel = modal.querySelector('.panel');
+                if (panel) {
+                    panel.classList.remove('shake');
+                    void panel.offsetWidth;
+                    panel.classList.add('shake');
+                    setTimeout(() => panel.classList.remove('shake'), 500);
+                }
+            } finally { submitBtn.disabled = false; }
+        }
+
+        submitBtn.addEventListener('click', doLoginAndNavigate);
+        passInput.addEventListener('keypress', (ev) => { if (ev.key === 'Enter') doLoginAndNavigate(); });
+        cancelBtn.addEventListener('click', (ev) => { ev.preventDefault(); hideModal(); });
+
+        // backdrop close via data-action attribute
+        backdrop.addEventListener('click', (e) => { hideModal(); });
+
+        document.querySelectorAll('.admin-button[data-target]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = btn.getAttribute('data-target');
+                showModal(target);
+            });
+        });
+    </script>
+</header>
+<!-- Passcode/login overlay removed — server-side protection should remain in place -->
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Flash</title>
+    <style>
+        body{font-family: 'Times New Roman', Times, serif;margin:0;padding:0;background: white;}
+        /* Use CSS Grid so images populate in rows (left-to-right) and wrap responsively */
+        .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;padding:20px;align-items:start}
+        .gallery-item{width:100%;aspect-ratio:4/3;background:#fff;box-shadow:0 6px 24px rgba(0,0,0,.08);border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+        .gallery-item img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+        .gallery-text{text-align:center;padding:10px}
+        h1{text-align:center;padding:20px;color:#333;font-size:50px}        
+        .back-link {
+            background: white;
+            color: red;
+            text-decoration: bold;
+            
+            border: 1px solid black;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        .flash-art {
+            background-color: black;
+            background-size: contain;
+            background-position: center;
+            text-align: center;
+            font-family: 'new times roman', serif;
+            font-size: 60px;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.9);
+            margin-top: 0px;
+            margin-bottom: 10px;
+        }
+        .back-link:hover {
+            background: black;
+            transform: translateY(-3px) scale(1.03);
+            color : white;
+        }
+    </style>
+</head>
+<body>  
+    
+    <h1 class="flash-art">Flash Art</h1>
+  <div class="gallery">
+    <!-- User uploads will be injected here -->
+    <div id="uploadsContainer"></div>
+  </div>
+  <a href="main_page.html"><button class="back-link">Back to Main</button></a>  
+  <script>
+    async function tryFetch(url){
+      try{ const r = await fetch(url); if (r.ok) return r; }catch(e){}
+      return null;
+    }
+
+    async function findApiBase(){
+      const candidates = ['','/api/images?target=flash','http://localhost:5000/api/images?target=flash','http://127.0.0.1:15500/api/images?target=flash','http://127.0.0.1:5000/api/images?target=flash'];
+      for (const c of candidates){
+        const url = c.startsWith('/') || c === '' ? (c || '/api/images?target=flash') : c;
+        const res = await tryFetch(url);
+        if (res) {
+          const u = new URL(res.url, location.href);
+          return u.origin;
+        }
+      }
+      return null;
+    }
+
+    (async function(){
+      const galleryEl = document.querySelector('.gallery');
+      const base = await findApiBase();
+      if (!base) return; // no server
+      try{
+        const res = await fetch(base + '/api/images?target=flash');
+        const serverImages = await res.json();
+        if(serverImages && serverImages.length){
+          galleryEl.innerHTML = '';
+          serverImages.forEach(item => {
+            const div = document.createElement('div'); div.className='gallery-item';
+            const img = document.createElement('img');
+            let src = item.url || '';
+            if (!/^https?:\/\//i.test(src)) src = base + (src.startsWith('/') ? src : '/' + src);
+            img.src = src;
+            img.alt = item.name || 'Flash Upload';
+            div.appendChild(img);
+            galleryEl.appendChild(div);
+          });
+        }
+      }catch(e){ /* ignore */ }
+    })();
+  </script>

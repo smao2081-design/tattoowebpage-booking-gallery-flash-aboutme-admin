@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  redis:
+    image: redis:7
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+
+  app:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "15500:15500"
+    volumes:
+      - ./public/uploads:/usr/src/app/public/uploads
+    depends_on:
+      - redis

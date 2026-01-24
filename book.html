@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Book an Appointment</title>
+    <style>
+        :root{font-family:Arial,Helvetica,sans-serif}
+        body{margin:0;background:#f4f4f4;color:#111}
+        .container{max-width:1100px;margin:24px auto;padding:18px}
+        h1{text-align:center;margin:6px 0 18px}
+
+        /* General form styles */
+        .container { width: 90%; max-width:1100px; margin: 24px auto; }
+        h1,h2 { color:#111 }
+        form { background: transparent; padding: 14px; margin-top: 20px; margin-bottom: 20px; color: #111 }
+        label { display:block; margin-bottom:6px }
+        input, textarea { width:100%; padding:8px; margin-bottom:12px; border:1px solid #ccc; border-radius:6px; box-sizing:border-box }
+        input[type="submit"]{ background:#333;color:#fff;padding:10px 14px;border:0;border-radius:6px; cursor:pointer }
+
+        /* Calendar styles */
+        .calendar-wrap { background:#fff; border:1px solid #e6e6e6; padding:10px; border-radius:8px; margin-bottom:18px; box-shadow:0 4px 18px rgba(0,0,0,0.06); }
+        .calendar-controls { display:flex; justify-content:flex-end; margin-bottom:8px }
+        .calendar-controls .nav button { background:#fff; border:1px solid #ddd; padding:6px 10px; border-radius:6px; cursor:pointer; margin-left:6px }
+        .calendar-controls .nav button:hover{ background:#f7f7f7 }
+        .calendar-center-text { text-align:center; margin-bottom:8px }
+        .calendar-center-text .title { font-weight:700; color:#222 }
+        .calendar-center-text .booked-note { color: rgba(220,20,60,0.9); font-size:13px }
+
+        .three-calendars { display:flex; gap:10px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; margin-top:6px }
+
+        /* Use consistent flex-basis math based on the gap (10px): subtract 2*gap for 3 cols */
+        .single-cal { flex:1 1 calc((100% - 20px)/3); max-width:calc((100% - 20px)/3); box-sizing:border-box; min-width:160px; display:flex; flex-direction:column; margin-bottom:12px; padding:6px }
+        .single-cal .month-title { text-align:center; font-weight:600; margin-bottom:8px }
+        .calendar-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:6px; align-content:start }
+        .calendar-grid .weekday { font-weight:700; text-align:center; padding:6px 4px; color:#555 }
+        .calendar-grid .day { min-height:34px; display:flex; align-items:center; justify-content:center; padding:6px; background:#fafafa; border-radius:6px; cursor:pointer; border:1px solid transparent }
+        .calendar-grid .day:hover { background:#f0f8ff }
+        .calendar-grid .day.today { box-shadow: inset 0 0 0 2px rgba(59,130,246,0.12) }
+        .calendar-grid .day.selected { background:#2563eb; color:#fff }
+        .calendar-grid .day.booked{ background:rgba(220,20,60,0.22); color:#7a121b; cursor:not-allowed; border:1px solid rgba(220,20,60,0.36); pointer-events:none }
+
+        /* Two columns: subtract 1*gap (10px) */
+        @media (max-width:980px){
+            .single-cal { flex:1 1 calc((100% - 10px)/2); max-width:calc((100% - 10px)/2) }
+        }
+        @media (max-width:520px){
+            .single-cal { flex:1 1 100%; max-width:100% }
+        }
+        .form-header { font-size: 20px; font-weight: 600; margin-bottom: 12px; text-align: center;}
+        .form-section { background: #fff; padding: 14px; border-radius: 8px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); }
+        /* Back link fixed and elevated so it's visible above the page bottom */
+        .back-link { position: fixed; left: 15px; bottom: 15px; background:#333; color:#fff; padding:10px 16px; border-radius:6px; text-decoration:none; z-index:1000; }
+        .back-link:hover { background:#fff; color:#c00; transform:translateY(-3px); }
+    </style>
+</head>
+<body>
+    <div class="container">
+       
+        <h1>Book an Appointment</h1>
+
+                <div class="p">
+                    <p>Interested in getting a tattoo? Please fill out the form below to schedule your appointment and I will email as soon as I can.</p>
+                    <p>Thank you, I can't wait to hear from you!</p>
+
+                    <h2>FAQ & Policy</h2>
+                    <p>Deposits are required to secure your appointment date. Deposits are $30 or $50 if a tattoo costs more than $200 and are nonrefundable. This means if you cancel you will not receive the money back.</p>
+                    <p>Deposits are made for security for us. Your deposit will be deducted from the final tattoo cost after the session.</p>
+
+                    <h2>Design Fee</h2>
+                    <p>A one-time design fee of $25–$50 will be added to your deposit as a separate cost if I am creating a custom design based on what you have requested. Design fees will not be deducted from the final tattoo cost. Designs will not be drawn until deposit is received and appointment is made.</p>
+
+                    <h2>Rescheduling</h2>
+                    <p>If for any reason you need to reschedule your appointment, please email me as soon as possible and at least 24 hours before your appointment date. I am understanding and emergencies happen; please be honest. You are allowed to reschedule once. If you must reschedule again, I will require another deposit. I do not require another deposit if I am the one rescheduling. After a second reschedule I may be unable to book you for future tattoos. No exceptions.</p>
+
+                    <h2>Arriving Late</h2>
+                    <p>Every appointment has a 15 minute grace period before I cancel your appointment. If you are running late, please call or text me. If you do not contact me and do not show up within the 15 minute grace period, I may have to cancel the appointment.</p>
+
+                    <h2>No Call / No Show</h2>
+                    <p>If you no call/no show to the appointment, I may not book you for future appointments. Please respect my time.</p>
+
+                    <h2>Extra Information</h2>
+                    <p>Make sure to stay hydrated and have a meal before the appointment. Please do not drink alcohol or consume pain killers (eg. ibuprofen) 24 hours prior to your appointment date as they act as blood thinners.</p>
+
+                    <h2>Bring A Valid ID</h2>
+                    <p>Please bring a valid government-issued ID or passport. Do not bring babies/toddlers into the studio as it can be hazardous if they roam around. If you bring a guest, you are allowed one guest and must let me know prior to the appointment. Bring a form of entertainment for longer sessions. We accept cash and card; cash tip is preferred.</p>
+
+                    <h2>Retouches</h2>
+                    <p>Retouches are recommended at least once after the initial tattoo session, especially for fine-line tattoos. Retouches are $15–$20 per tattoo within one year of the initial tattoo date. After one year, retouches are charged based on time required. Retouches can be requested after the tattoo is fully healed (about 35 days).</p>
+
+                    <p>I WILL NOT RETOUCH TATTOOS DONE BY OTHER ARTISTS.</p>
+                <div>
+                    <form id="bookingForm" action="/api/book" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="_next" value="thank-you.html">
+                <div class="nav">
+                    <button type="button" id="prevMonth">‹</button>
+                    <button type="button" id="nextMonth">›</button>
+                </div>
+            </div>
+            <div class="calendar-center-text">
+                <div class="title">Available dates</div>
+                <div class="booked-note">Booked dates are red</div>
+            </div>
+            <div class="three-calendars" id="threeCalendars"></div>
+        </div>
+
+            /* Booking form fields */
+        <div class="form-section"> 
+            <h2 class="form-header">Booking Form</h2>
+            <input type="hidden" name="_next" value="thank-you.html">
+            <label for="name">Name:</label>
+            <input id="name" name="name" type="text" placeholder="First and Last" required>
+
+            <label for="email">Email:</label>
+            <input id="email" name="email" type="email" placeholder="example@mail.com" required>
+
+            <label for="date">Date:</label>
+            <input id="date" name="date" type="date" required>
+
+            <label for="time">Time:</label>
+            <input id="time" name="time" type="time" required>
+
+            <label for="age">Age:</label>
+            <input id="age" name="age" type="text" placeholder="Your Age - Must be 18 or older" required>
+
+            <label for="allergies">Allergies:</label>
+            <input id="allergies" name="allergies" type="text" placeholder="Any known allergies?">
+
+            <label for="placement">Placement:</label>
+            <input id="placement" name="placement" type="text" placeholder="Where would you like your tattoo?">
+
+            <label for="size-tatto">Tattoo Size:</label>
+            <input id="size-tatto" name="size-tatto" type="text" placeholder="Small, Medium, Large">
+
+            <label for="design">Design Description:</label>
+            <textarea id="design" name="design" rows="3" placeholder="Describe your desired design"></textarea>
+
+            <label for="upload">Upload Reference Image:</label>
+            <input id="upload" name="attachment" type="file" accept="image/*">
+
+            <input type="submit" value="Submit">
+            </form>
+        </div>
+        /* End of booking form fields */
+        <a class="back-link" href="main_page.html">Back to Main</a> <--back to main link -->
+    </div>
+
+    <script>
+        // If this static site is served from the Live Server (127.0.0.1:5500),
+        // point API calls to the local backend on port 5000 by default.
+        if (!window.apiBase && location.hostname === '127.0.0.1' && location.port === '5500') {
+            window.apiBase = 'http://127.0.0.1:5000';
+            console.log('window.apiBase set to', window.apiBase);
+        }
+
+        (function(){
+            const threeContainer = document.getElementById('threeCalendars');
+            const prevBtn = document.getElementById('prevMonth');
+            const nextBtn = document.getElementById('nextMonth');
+            const dateInput = document.getElementById('date');
+            let viewDate = new Date();
+            let bookedSet = new Set();
+
+            function startOfMonth(d){ return new Date(d.getFullYear(), d.getMonth(), 1); }
+            function daysInMonth(d){ return new Date(d.getFullYear(), d.getMonth()+1, 0).getDate(); }
+            function ymd(d){ const y=d.getFullYear(); const m=String(d.getMonth()+1).padStart(2,'0'); const dd=String(d.getDate()).padStart(2,'0'); return `${y}-${m}-${dd}` }
+
+            async function loadBooked(){
+                const tried = [];
+                const candidates = [
+                    '/api/booked-dates',
+                    (window.apiBase ? (window.apiBase.replace(/\/$/, '') + '/api/booked-dates') : null),
+                    'http://localhost:5000/api/booked-dates',
+                    'http://127.0.0.1:5000/api/booked-dates',
+                    'http://127.0.0.1:15500/api/booked-dates'
+                ].filter(Boolean);
+                let success = false;
+                try{
+                    for (const url of candidates){
+                        tried.push(url);
+                        try{
+                            const res = await fetch(url, { credentials: 'include' });
+                            if (res && res.ok){
+                                const j = await res.json().catch(()=>null);
+                                bookedSet = new Set((j && j.dates) ? j.dates.map(String) : []);
+                                success = true;
+                                console.log('Loaded booked dates from', url, bookedSet);
+                                break;
+                            } else {
+                                console.debug('Booked dates fetch failed', url, res && res.status);
+                            }
+                        }catch(err){ console.debug('Booked dates fetch error', url, err); }
+                    }
+                }catch(e){ console.error('loadBooked error', e); }
+                if (!success) bookedSet = new Set();
+            }
+
+            function makeWeekdays(){ const frag=document.createDocumentFragment(); ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(w=>{ const d=document.createElement('div'); d.className='weekday'; d.textContent=w; frag.appendChild(d)}); return frag }
+
+            function renderMonth(baseDate, selectedVal){
+                const block=document.createElement('div'); block.className='single-cal';
+                const title=document.createElement('div'); title.className='month-title'; title.textContent = baseDate.toLocaleString(undefined,{month:'long',year:'numeric'});
+                block.appendChild(title);
+                const grid=document.createElement('div'); grid.className='calendar-grid';
+                grid.appendChild(makeWeekdays());
+
+                const start = startOfMonth(baseDate);
+                const first = start.getDay();
+                const total = daysInMonth(baseDate);
+                for(let i=0;i<first;i++){ const e=document.createElement('div'); e.className='day empty'; grid.appendChild(e) }
+                const today = new Date();
+                for(let d=1; d<=total; d++){
+                    const el=document.createElement('div'); el.className='day'; el.textContent=d;
+                    const cell = new Date(baseDate.getFullYear(), baseDate.getMonth(), d);
+                    const key = ymd(cell);
+                    if (cell.toDateString() === today.toDateString()) el.classList.add('today');
+                    const isBooked = bookedSet.has(key);
+                    if (isBooked){ el.classList.add('booked'); el.title='Not available' }
+                    else { el.addEventListener('click', ()=>{ document.querySelectorAll('.day.selected').forEach(n=>n.classList.remove('selected')); el.classList.add('selected'); if (dateInput) dateInput.value = key }) }
+                    if (!isBooked && selectedVal && selectedVal===key) el.classList.add('selected');
+                    grid.appendChild(el)
+                }
+                block.appendChild(grid);
+                return block;
+            }
+
+            async function render(){
+                await loadBooked();
+                threeContainer.innerHTML = '';
+                const offsets = [0,1,2];
+                const selectedVal = (dateInput && dateInput.value) ? String(dateInput.value) : '';
+                for (const off of offsets){ const d = new Date(viewDate.getFullYear(), viewDate.getMonth() + off, 1); threeContainer.appendChild(renderMonth(d, selectedVal)) }
+            }
+
+            prevBtn.addEventListener('click', ()=>{ viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth()-1, 1); render() })
+            nextBtn.addEventListener('click', ()=>{ viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth()+1, 1); render() })
+
+            render();
+
+            // booking form submit (keep original behaviour)
+            (function(){
+                const form = document.getElementById('bookingForm');
+                if (!form) return;
+                form.addEventListener('submit', async function(e){
+                    if (!window.fetch) return true;
+                    e.preventDefault();
+                    const fd = new FormData(form);
+                    const next = fd.get('_next') || 'thank-you.html';
+                    try{
+                        let submitUrl = form.action;
+                        try{ const apiBase = (window.apiBase && String(window.apiBase)) || ''; if (apiBase){ const path = submitUrl.startsWith('/') ? submitUrl : new URL(submitUrl, window.location.href).pathname; submitUrl = apiBase.replace(/\/$/,'') + path } }catch(err){}
+                        const res = await fetch(submitUrl, { method:'POST', body: fd });
+                        if (res.ok){ window.location = next; return }
+                        const json = await res.json().catch(()=>null);
+                        alert('Submit failed: ' + (json?.error || res.statusText || 'unknown'))
+                    }catch(err){ alert('Submit error') }
+                })
+            })();
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body { font-family: Arial, sans-serif; background-color: black; margin: 0; padding: 20px; }
+        h1 { text-align: center; color: #333; }
+        .admin-container { max-width: 900px; margin: 0 auto; background: white; padding: 20px; box-shadow: 0 6px 24px rgba(0,0,0,.08); border-radius: 8px; position: relative; }
+        .admin-actions { position: absolute; right: 20px; top: 20px; }
+        @media (max-width:600px){ .admin-actions{ position: static; text-align:center; margin-top:16px; } }
+        .row { display:flex; gap:12px; align-items:center; }
+        .col { flex:1 }
+        .btn { padding:10px 12px; background:#333; color:#fff; border:0; border-radius:4px; cursor:pointer }
+        .btn.secondary { background:#666 }
+        .status { margin-left:12px; color:#b00 }
+        #gallery { margin-top:18px; display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:12px }
+        #flashGallery { margin-top:18px; display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:12px }
+        .card { position:relative; border:1px solid #eee; border-radius:6px; overflow:hidden; background:#fff }
+        .card img{ width:100%; height:140px; object-fit:cover; display:block }
+        .card .meta{ padding:8px; font-size:12px; text-align:center }
+        .del { position:absolute; right:8px; top:8px; background:rgba(0,0,0,0.6); color:#fff; border:0; padding:6px 8px; border-radius:4px; cursor:pointer }
+        .signin { margin-bottom:12px }
+        label{ display:block; margin-bottom:6px }
+        input[type=file] { display:block }
+        .admin-actions .btn { position: fixed; top: 30px; right: 15%; background:#666; color:#fff; border:none; z-index: 1000; }
+        /* back button is positioned via .admin-actions */
+    
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <h1>Admin — Upload & Manage</h1>
+
+        <div class="signin">
+            <div class="row">
+                <div class="col">
+                    <label for="username">Username</label>
+                    <input id="username" placeholder="admin" />
+                </div>
+                <div class="col">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" placeholder="password" />
+                </div>
+                <div>
+                    <button id="signInBtn" class="btn">Sign In</button>
+                </div>
+                <div>
+                    <button id="signOutBtn" class="btn secondary">Sign Out</button>
+                </div>
+                <div class="status"><span id="signedInAs">Not signed in</span></div>
+            </div>
+        </div>
+
+        <section>
+            <h2>Upload images (gallery)</h2>
+            <label for="images">Select images to upload</label>
+            <input id="images" type="file" multiple accept="image/*" />
+            <div style="margin-top:8px">
+                <button id="uploadBtn" class="btn">Image Upload</button>
+                <span id="uploadStatus" class="status"></span>
+            </div>
+        </section>
+
+        <section style="margin-top:22px">
+            <h2>Manage Booked Dates</h2>
+            <p>Mark dates as unavailable for booking. Admin only.</p>
+            <label for="adminBookedDateInput">Select date</label>
+            <input id="adminBookedDateInput" type="date" />
+            <div style="margin-top:8px">
+                <button id="addBookedBtn" class="btn">Add Booked Date</button>
+                <span id="bookedStatus" class="status"></span>
+            </div>
+            <h3 style="margin-top:12px">Currently Booked Dates</h3>
+            <div id="bookedList">Loading...</div>
+        </section>
+
+        <section style="margin-top:22px">
+            <h2>Flash images (flash art)</h2>
+            <label for="flashImages">Select flash images</label>
+            <input id="flashImages" type="file" multiple accept="image/*" />
+            <div style="margin-top:8px">
+                <button id="uploadFlashBtn" class="btn">Upload Flash</button>
+                <span id="uploadFlashStatus" class="status"></span>
+            </div>
+            <h2 style="margin-top:12px">Flash Uploads</h2>
+            <div id="flashGallery"></div>
+        </section>
+
+        <section>
+            <h2 style="margin-top:18px">Gallery Uploads</h2>
+            <div id="gallery"></div>
+        </section>
+
+        <div class="admin-actions">
+            <button class="btn secondary" id="backToHomeBtn" onclick="location.href='main_page.html'">Back to Home</button>
+        </div>
+    </div>
+
+    <script>
+        // Basic client-side auth helper (convenience only)
+        // Ensure admin UI targets the upload server when the page is served from another origin.
+        // Change this if your upload server is hosted elsewhere.
+        window.apiBase = window.apiBase || 'http://127.0.0.1:15500';
+        let isSignedIn = false;
+
+        function setSignedIn(user){
+            isSignedIn = !!user;
+            document.getElementById('signedInAs').textContent = user ? ('Signed in: ' + user) : 'Not signed in';
+            // refresh galleries so delete controls appear/disappear based on auth state
+            try { refreshGallery(); } catch(e){}
+            try { refreshFlashGallery(); } catch(e){}
+        }
+
+        document.getElementById('signInBtn').addEventListener('click', async ()=>{
+            const u = document.getElementById('username').value || 'admin';
+            const p = document.getElementById('password').value || '';
+            if (!p) { alert('Enter password'); return; }
+            try{
+                const res = await fetch((window.apiBase || '') + '/api/login', { method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ user: u, pass: p }) });
+                if (!res.ok) { const j = await res.json().catch(()=>null); alert('Sign in failed: ' + (j?.error || res.status)); return; }
+                setSignedIn(u);
+            }catch(e){ alert('Sign in error'); }
+        });
+
+        document.getElementById('signOutBtn').addEventListener('click', async ()=>{
+            try{
+                await fetch((window.apiBase || '') + '/api/logout', { method: 'POST', credentials: 'include' });
+            }catch(e){}
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            setSignedIn(null);
+        });
+
+        async function fetchJson(url, opts){
+            opts = opts || {};
+            // use `include` so HttpOnly cookies are sent to the upload server when hosted on another origin
+            opts.credentials = opts.credentials || 'include';
+            // if url is relative and an apiBase is known, prefix it
+            if (!/^https?:\/\//i.test(url)) {
+                const base = window.apiBase || null;
+                if (base) url = base.replace(/\/$/, '') + (url.startsWith('/') ? url : '/' + url);
+            }
+            const r = await fetch(url, opts);
+            return r;
+        }
+
+        // Try to locate the running upload server's base origin.
+        async function findApiBase(){
+            const candidates = ['', '/api/images', 'http://localhost:5000/api/images', 'http://127.0.0.1:15500/api/images', 'http://127.0.0.1:5000/api/images'];
+            for (const c of candidates){
+                const url = (c === '' || c.startsWith('/')) ? (c || '/api/images') : c;
+                try{
+                    const r = await fetch(url, { method: 'HEAD', mode: 'no-cors' });
+                    // If fetch didn't throw then derive origin from response URL when available
+                    if (r && r.type) {
+                        try{ const u = new URL((r.url && r.url !== 'about:blank') ? r.url : location.origin); window.apiBase = u.origin; return window.apiBase; }catch(e){}
+                    }
+                }catch(e){ /* ignore */ }
+                // fallback: try a full GET and see if we get any HTML/text back
+                try{
+                    const r2 = await fetch(url, { method: 'GET' });
+                    if (r2 && (r2.status === 200 || r2.status === 401 || r2.status === 403)){
+                        const u = new URL(r2.url, location.href);
+                        window.apiBase = u.origin; return window.apiBase;
+                    }
+                }catch(e){ /* ignore */ }
+            }
+            // default to same origin
+            window.apiBase = location.origin; return window.apiBase;
+        }
+
+        async function refreshGallery(){
+            const g = document.getElementById('gallery');
+            g.innerHTML = 'Loading...';
+            try{
+                const res = await fetchJson('/api/images');
+                if (!res.ok) {
+                    const text = await res.text().catch(()=>'');
+                    g.textContent = 'Failed to load: ' + res.status + ' ' + text;
+                    console.error('refreshGallery failed', res.status, res.statusText, res.url, text);
+                    return;
+                }
+                const imgs = await res.json();
+                g.innerHTML = '';
+                if (!imgs || imgs.length === 0) { g.textContent = 'No uploads'; return; }
+                imgs.forEach(i => {
+                    const card = document.createElement('div'); card.className = 'card';
+                    const img = document.createElement('img');
+                    let src = i.url || '';
+                    if (!/^https?:\/\//i.test(src)) {
+                        const base = (window.apiBase && window.apiBase.replace(/\/$/, '')) || (location.origin || '');
+                        src = base + (src.startsWith('/') ? src : '/' + src);
+                    }
+                    img.src = src;
+                    const meta = document.createElement('div'); meta.className = 'meta'; meta.textContent = i.name || '';
+                    card.appendChild(img);
+                    // only create delete control when signed in
+                    if (isSignedIn) {
+                        const del = document.createElement('button'); del.className='del'; del.textContent='Delete';
+                        del.addEventListener('click', async ()=>{
+                            if (!confirm('Delete ' + i.name + '?')) return;
+                            const r = await fetchJson('/api/images/' + encodeURIComponent(i.name), { method: 'DELETE' });
+                            if (r.status === 401) { alert('Unauthorized — sign in first'); return; }
+                            if (!r.ok) { alert('Delete failed'); return; }
+                            card.remove();
+                        });
+                        card.appendChild(del);
+                    }
+                    card.appendChild(meta);
+                    g.appendChild(card);
+                });
+            }catch(e){ g.textContent = 'Error loading'; }
+        }
+
+        document.getElementById('uploadBtn').addEventListener('click', async ()=>{
+            const files = document.getElementById('images').files;
+            const status = document.getElementById('uploadStatus');
+            if (!files || files.length === 0) { status.textContent = 'Select files first'; return; }
+            if (!isSignedIn) { alert('Sign in first'); return; }
+            status.textContent = 'Uploading...';
+            const fd = new FormData();
+            for (const f of files) fd.append('images', f);
+            try{
+                const res = await fetchJson('/api/upload', { method: 'POST', body: fd });
+                if (res.status === 401) { status.textContent = 'Unauthorized'; return; }
+                if (!res.ok) { status.textContent = 'Upload failed'; return; }
+                const j = await res.json();
+                status.textContent = 'Uploaded ' + (j.uploaded?.length || 0) + ' file(s)';
+                document.getElementById('images').value = '';
+                await refreshGallery();
+            }catch(e){ status.textContent = 'Error uploading'; }
+        });
+
+        // Flash uploads
+        document.getElementById('uploadFlashBtn').addEventListener('click', async ()=>{
+            const files = document.getElementById('flashImages').files;
+            const status = document.getElementById('uploadFlashStatus');
+            if (!files || files.length === 0) { status.textContent = 'Select files first'; return; }
+            if (!isSignedIn) { alert('Sign in first'); return; }
+            status.textContent = 'Uploading...';
+            const fd = new FormData();
+            for (const f of files) fd.append('images', f);
+            try{
+                const res = await fetchJson('/api/upload?target=flash', { method: 'POST', body: fd });
+                if (res.status === 401) { status.textContent = 'Unauthorized'; return; }
+                if (!res.ok) { status.textContent = 'Upload failed'; return; }
+                const j = await res.json();
+                status.textContent = 'Uploaded ' + (j.uploaded?.length || 0) + ' file(s)';
+                document.getElementById('flashImages').value = '';
+                await refreshFlashGallery();
+            }catch(e){ status.textContent = 'Error uploading'; }
+        });
+
+        async function refreshFlashGallery(){
+            const g = document.getElementById('flashGallery');
+            g.innerHTML = 'Loading...';
+            try{
+                const res = await fetchJson('/api/images?target=flash');
+                if (!res.ok) {
+                    const text = await res.text().catch(()=>'');
+                    g.textContent = 'Failed to load: ' + res.status + ' ' + text;
+                    console.error('refreshFlashGallery failed', res.status, res.statusText, res.url, text);
+                    return;
+                }
+                const imgs = await res.json();
+                g.innerHTML = '';
+                if (!imgs || imgs.length === 0) { g.textContent = 'No flash uploads'; return; }
+                imgs.forEach(i => {
+                    const card = document.createElement('div'); card.className = 'card';
+                    const img = document.createElement('img');
+                    let src = i.url || '';
+                    if (!/^https?:\/\//i.test(src)) {
+                        const base = (window.apiBase && window.apiBase.replace(/\/$/, '')) || (location.origin || '');
+                        src = base + (src.startsWith('/') ? src : '/' + src);
+                    }
+                    img.src = src;
+                    const meta = document.createElement('div'); meta.className = 'meta'; meta.textContent = i.name || '';
+                    card.appendChild(img);
+                    if (isSignedIn) {
+                        const del = document.createElement('button'); del.className='del'; del.textContent='Delete';
+                        del.addEventListener('click', async ()=>{
+                            if (!confirm('Delete ' + i.name + '?')) return;
+                            const r = await fetchJson('/api/images/' + encodeURIComponent(i.name) + '?target=flash', { method: 'DELETE' });
+                            if (r.status === 401) { alert('Unauthorized — sign in first'); return; }
+                            if (!r.ok) { alert('Delete failed'); return; }
+                            card.remove();
+                        });
+                        card.appendChild(del);
+                    }
+                    card.appendChild(meta);
+                    g.appendChild(card);
+                });
+            }catch(e){ g.textContent = 'Error loading'; }
+        }
+
+        // Booked dates management
+        async function loadBookedDates(){
+            const el = document.getElementById('bookedList');
+            el.innerHTML = 'Loading...';
+            try{
+                const res = await fetchJson('/api/booked-dates');
+                if (!res.ok) { el.textContent = 'Failed to load'; return; }
+                const j = await res.json();
+                const dates = (j && j.dates) ? j.dates.slice().sort() : [];
+                if (dates.length === 0) { el.textContent = 'No booked dates'; return; }
+                el.innerHTML = '';
+                dates.forEach(d => {
+                    const row = document.createElement('div');
+                    row.style.display = 'inline-flex';
+                    row.style.alignItems = 'center';
+                    row.style.gap = '8px';
+                    row.style.marginBottom = '6px';
+                    row.style.marginRight = '18px';
+                    const txt = document.createElement('div'); txt.textContent = d;
+                    const del = document.createElement('button'); del.className='btn secondary'; del.textContent='Remove';
+                    del.addEventListener('click', async ()=>{
+                        if (!confirm('Remove booked date ' + d + '?')) return;
+                        const r = await fetchJson('/api/booked-dates', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'remove', dates: [d] }) });
+                        if (r.status === 401) { alert('Unauthorized — sign in first'); return; }
+                        if (!r.ok) { alert('Remove failed'); return; }
+                        await loadBookedDates();
+                    });
+                    row.appendChild(txt);
+                    row.appendChild(del);
+                    el.appendChild(row);
+                });
+            }catch(e){ el.textContent = 'Error loading'; }
+        }
+
+        document.getElementById('addBookedBtn').addEventListener('click', async ()=>{
+            if (!isSignedIn) { alert('Sign in first'); return; }
+            const d = document.getElementById('adminBookedDateInput').value;
+            const status = document.getElementById('bookedStatus');
+            if (!d) { status.textContent = 'Select a date'; return; }
+            status.textContent = 'Saving...';
+            try{
+                const res = await fetchJson('/api/booked-dates', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'add', dates: [d] }) });
+                if (res.status === 401) { status.textContent = 'Unauthorized'; return; }
+                if (!res.ok) { status.textContent = 'Save failed'; return; }
+                status.textContent = 'Saved';
+                document.getElementById('adminBookedDateInput').value = '';
+                await loadBookedDates();
+            }catch(e){ status.textContent = 'Error'; }
+            setTimeout(()=>{ document.getElementById('bookedStatus').textContent = ''; }, 2000);
+        });
+
+        // refresh booked dates on init
+        (async function(){
+            try{ await loadBookedDates(); }catch(e){}
+        })();
+
+        // init: check server session via /api/whoami
+        (async function initAuth(){
+            try{
+                const who = await fetchJson('/api/whoami');
+                if (who.ok) {
+                    const j = await who.json();
+                    setSignedIn(j.user || 'admin');
+                } else setSignedIn(null);
+            }catch(e){ setSignedIn(null); }
+            refreshGallery();
+        })();
+    </script>
+</body>
+</html>

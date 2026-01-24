@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Gallery</title>
+  <style>
+    body{font-family: 'Times New Roman', Times, serif;margin:0;padding:0;background:#fafafa}
+    /* Use CSS Grid so images populate in rows (left-to-right) and wrap responsively */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;padding:20px;align-items:start}
+    .gallery-item{width:100%;aspect-ratio:4/3;background:#fff;box-shadow:0 6px 24px rgba(0,0,0,.08);border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .gallery-item img{width:100%;height:100%;object-fit:contain;display:block}
+    /* lightbox / overlay for full image */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.8);display:none;align-items:center;justify-content:center;z-index:2000}
+    .lightbox img{max-width:90%;max-height:90%;box-shadow:0 12px 40px rgba(0,0,0,.6);border-radius:6px}
+    .lightbox.show{display:flex}
+    .gallery-text{text-align:center;padding:10px}
+    h1{text-align:center;padding:20px;color:#333;font-size:50px}
+
+
+    .back-link {
+        background: white;
+        color: red;
+        text-decoration: bold;
+        z-index: 1000;
+        position: fixed;
+        left: 15px;
+        bottom: 15px;
+        
+        border-radius: 4px;
+        padding: 10px 20px;
+        cursor: pointer;
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    .back-link:hover {
+        background: black;
+        transform: translateY(-3px) scale(1.03);
+        color : white;
+    }
+    .book-link {
+        z-index: 1000;
+        position: fixed;
+        right: 68%;
+        bottom: 15px;
+        background: white;
+        color: red;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 4px;
+        display: inline-block;
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    .book-link:hover {
+        transform: translateY(-3px) scale(1.03);
+        background: black;
+        color: white;
+    }
+    .header-gallery {
+        font-family: 'Times New Roman', Times, serif;
+        display: flex;
+        justify-content: center;
+        font-size: 60px;
+        margin-top: 0px;
+        margin-bottom: 10px;
+        background-color: black;
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-shadow: 3px 3px 6px rgba(0,0,0,0.9);
+    } 
+    
+
+  
+
+  </style>
+</head>
+<body>
+
+    <h1 class="header-gallery">Gallery</h1>
+  <div class="gallery">
+    <!-- Uploaded images are injected directly into this grid -->
+  </div>
+  <a href="book.html"><button class="book-link">Book Now</button></a>
+  <a href="main_page.html"><button class="back-link">Back to Main</button></a>
+  <script>
+    // Load server-side uploaded images first (from Node upload server), then keep static fallback
+    async function tryFetch(url){
+      try{ const r = await fetch(url); if (r.ok) return r; }catch(e){}
+      return null;
+    }
+
+    async function findApiBase(){
+      const candidates = ['','/api/images','http://localhost:5000/api/images','http://127.0.0.1:15500/api/images','http://127.0.0.1:5000/api/images'];
+      for (const c of candidates){
+        const url = c.startsWith('/') || c === '' ? (c || '/api/images') : c;
+        const res = await tryFetch(url);
+        if (res) {
+          // derive base (strip /api/images)
+          const u = new URL(res.url, location.href);
+          return u.origin;
+        }
+      }
+      return null;
+    }
+
+    (async function(){
+      const galleryEl = document.querySelector('.gallery');
+      const base = await findApiBase();
+      if (!base) return; // no server
+
+      // create lightbox overlay
+      const lightbox = document.createElement('div'); lightbox.className = 'lightbox';
+      const lbImg = document.createElement('img'); lbImg.alt = 'Full'; lightbox.appendChild(lbImg);
+      lightbox.addEventListener('click', ()=>{ lightbox.classList.remove('show'); lbImg.src = ''; });
+      document.body.appendChild(lightbox);
+
+      try{
+        const res = await fetch(base + '/api/images');
+        const serverImages = await res.json();
+        if(serverImages && serverImages.length){
+          // remove fallbacks/static block but keep header and buttons
+          const staticBlock = document.getElementById('staticGallery');
+          if (staticBlock) staticBlock.remove();
+          // ensure gallery itself is cleared and used as the grid container
+          galleryEl.innerHTML = '';
+          serverImages.forEach(item => {
+            const div = document.createElement('div'); div.className='gallery-item';
+            const img = document.createElement('img');
+            // Prefer thumbnail URL if provided by API (e.g., 400x300). Fallback to full image.
+            let full = item.url || '';
+            if (!/^https?:\/\//i.test(full)) full = base + (full.startsWith('/') ? full : '/' + full);
+            let thumb = item.thumb || item.thumbnail || null;
+            if (thumb && !/^https?:\/\//i.test(thumb)) thumb = base + (thumb.startsWith('/') ? thumb : '/' + thumb);
+            img.loading = 'lazy';
+            img.src = thumb || full;
+            img.alt = item.name || 'Upload';
+            img.dataset.full = full;
+            img.style.cursor = 'zoom-in';
+
+            img.addEventListener('click', (e)=>{
+              e.stopPropagation();
+              lbImg.src = img.dataset.full;
+              lightbox.classList.add('show');
+            });
+
+            const wrapper = document.createElement('div'); wrapper.style.position = 'relative';
+            wrapper.appendChild(img);
+            div.appendChild(wrapper);
+            galleryEl.appendChild(div);
+          });
+        }
+      }catch(e){ /* ignore */ }
+    })();
+  </script>
+</body>
+</html>

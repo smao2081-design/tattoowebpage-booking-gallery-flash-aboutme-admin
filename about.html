@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            /* served from /public at project root */
+            background-position: center center;
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 18px;
+            text-align: left;
+        }
+        .back-link {
+            background: blanchedalmond;
+            color: red;
+            text-decoration: bold;
+            border: 1px solid black;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .back-link:hover {
+            background: black;
+            transform: translateY(-3px) scale(1.03);
+            color : white;
+        }
+        .container {
+            width: 50%;
+            text-align: left;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.8);
+            margin-left: auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+ <header>
+  <img id="profile-image" class="profile-image" src="your_profile_image_path" alt="Profile Image" /> <!-- ADD IMAGE PATHDYNAMICALLY -->
+</header>
+
+<h1>About Me</h1>
+<div class="container">
+    <p>Hello! I'm [Your Name], a passionate artist and tattoo enthusiast based in [Your Location]. With over [X] years of experience in the tattoo industry, I specialize in [Your Specializations, e.g., traditional, realism, watercolor tattoos].</p>
+    <p>My journey into the world of tattoos began when I was [brief personal story or inspiration]. Since then, I've dedicated myself to mastering my craft and creating unique, meaningful designs for my clients.</p>
+    <p>When I'm not in the studio, I enjoy [Your Hobbies or Interests]. These experiences often inspire my artwork and help me connect with my clients on a deeper level.</p>
+    <p>Thank you for visiting my website! I look forward to bringing your tattoo ideas to life.</p>
+</div>
+<a href="main_page.html"><button class="back-link">Back to Home</button></a>
+<a href="book.html"><button class="back-link">Book Now</button></a>
+
+<script>
+(function(){
+  const img = document.getElementById('babyfull');
+  if (!img) return;
+  const isFile = location.protocol === 'file:';
+  img.src = isFile ? 'public/babyfull-copy.jpeg' : (location.origin || '') + '/babyfull-copy.jpeg';
+  document.body.style.backgroundImage = isFile
+    ? "url('public/Cherry_blossom-copy.png')"
+    : "url('/Cherry_blossom-copy.png')";
+})();
+</script>
+</body>
+</html>
