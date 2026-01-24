@@ -40,5 +40,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local uploads and logs
+public/uploads
+server.log
 public/uploads
 server.log
