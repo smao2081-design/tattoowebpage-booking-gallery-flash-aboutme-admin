@@ -21,7 +21,9 @@ jobs:
       - name: Install prerequisites
         run: |
           sudo apt-get update
-          sudo apt-get install -y zip awscli
+          sudo apt-get install -y zip
+          python3 -m pip install --upgrade --user awscli
+          echo "${HOME}/.local/bin" >> $GITHUB_PATH
 
       - name: Zip application
         run: |
