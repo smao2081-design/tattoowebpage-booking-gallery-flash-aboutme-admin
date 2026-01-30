@@ -49,12 +49,39 @@ jobs:
             printf "module.exports = require('../dist/server/require-hook');\n" > node_modules/next/server/require-hook.js
           fi
 
-      - name: Zip application
-        run: |
-          # Ensure platform hooks are executable, exclude large/sensitive files
-          chmod +x .platform/hooks/prebuild/enable-swap.sh || true
-          zip -r app.zip . -x public/uploads/**\* .git/**\* .env/**\* server.log
+        
 
+        - name: Zip application
+          run: |
+            set -euo pipefail
+            # Ensure platform hooks are executable and show what will be included
+            chmod -R +x .platform/hooks || true
+            echo "Listing files at repo root (helpful for debugging artifact contents):"
+            ls -la . || true
+            echo "Listing .platform (if present):"
+            [ -d .platform ] && ls -la .platform || true
+            echo ".next size (if present):"
+            [ -d .next ] && du -sh .next || true
+            echo "node_modules size (if present):"
+            [ -d node_modules ] && du -sh node_modules || true
+
+            # Fail early if the production build is missing. This prevents
+            # deploying a bundle that needs on-instance builds which can OOM.
+            if [ ! -d .next ]; then
+              echo "ERROR: .next directory missing. Ensure 'npm run build' produced .next before packaging." >&2
+              exit 1
+            fi
+
+            # Create zip and explicitly include dotfiles/directories; exclude large/sensitive files.
+            zip -r app.zip . .next .platform -x "public/uploads/*" ".git/*" ".env/*" "server.log"
+
+            # Print archive contents for debugging (use Python to avoid relying on system unzip)
+            echo "Contents of app.zip:" 
+            python3 - <<'PY'
+  import zipfile,sys
+  z=zipfile.ZipFile('app.zip')
+  print('\n'.join(z.namelist()[:200]))
+  PY
 
 
       - name: Upload artifact to S3
