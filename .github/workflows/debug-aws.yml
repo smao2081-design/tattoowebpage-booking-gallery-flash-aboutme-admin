@@ -53,4 +53,28 @@ jobs:
           aws elasticbeanstalk request-environment-info --environment-name "${{ secrets.EB_ENV_NAME }}" --info-type tail --region "${{ secrets.AWS_REGION }}" || true
           sleep 5
           echo "Retrieving environment info..."
-          aws elasticbeanstalk retrieve-environment-info --environment-name "${{ secrets.EB_ENV_NAME }}" --info-type tail --region "${{ secrets.AWS_REGION }}" || true
+          aws elasticbeanstalk retrieve-environment-info --environment-name "${{ secrets.EB_ENV_NAME }}" --info-type tail --region "${{ secrets.AWS_REGION }}" --output json > envinfo.json || true
+
+      - name: Download and print tail logs
+        run: |
+          echo "Parsing retrieved environment info and downloading tail logs..."
+          if [ ! -s envinfo.json ]; then
+            echo "envinfo.json missing or empty; no tail logs available."; exit 0
+          fi
+          python3 - <<'PY'
+import json,sys,urllib.request
+info=json.load(open('envinfo.json'))
+for e in info.get('EnvironmentInfo',[]):
+    url=e.get('Message')
+    if not url:
+        continue
+    print('---- FETCHING: '+url)
+    try:
+        resp=urllib.request.urlopen(url)
+        data=resp.read().decode('utf-8', 'replace')
+        lines=data.splitlines()
+        for ln in lines[:400]:
+            print(ln)
+    except Exception as ex:
+        print('FETCH ERROR:', ex)
+PY
