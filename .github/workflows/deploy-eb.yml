@@ -35,10 +35,16 @@ jobs:
           npm ci
           npm run build
 
+      - name: Prune devDependencies for production artifact
+        run: |
+          # Remove devDependencies so the packaged node_modules contains only production deps
+          npm prune --production || true
+          du -sh node_modules || true
+
       - name: Zip application
         run: |
-          # Exclude large or sensitive files
-          zip -r app.zip . -x node_modules/**\* public/uploads/**\* .git/**\* .env/**\* server.log
+          # Exclude large or sensitive files; include node_modules (production-only after prune)
+          zip -r app.zip . -x public/uploads/**\* .git/**\* .env/**\* server.log
 
 
 
