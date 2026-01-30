@@ -43,21 +43,34 @@ jobs:
 
       - name: Zip application
         run: |
-          # Exclude large or sensitive files; include node_modules (production-only after prune)
+          # Ensure platform hooks are executable, exclude large/sensitive files
+          chmod +x .platform/hooks/prebuild/enable-swap.sh || true
           zip -r app.zip . -x public/uploads/**\* .git/**\* .env/**\* server.log
 
 
 
-      - name: Deploy to Elastic Beanstalk
-        uses: einaregilsson/beanstalk-deploy@v20
-        with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          region: ${{ secrets.AWS_REGION }}
-          application_name: ${{ secrets.EB_APP_NAME }}
-          environment_name: ${{ secrets.EB_ENV_NAME }}
-          version_label: "github-${{ github.run_id }}"
-          # Reference the already-uploaded S3 object by providing the
-          # existing bucket name and the S3 key as `deployment_package`.
-          existing_bucket_name: ${{ secrets.EB_BUCKET }}
-          deployment_package: app.zip
+      - name: Upload artifact to S3
+        env:
+          EB_BUCKET: ${{ secrets.EB_BUCKET }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+        run: |
+          aws s3 cp app.zip s3://$EB_BUCKET/github-${{ github.run_id }}-app.zip --region $AWS_REGION
+
+      - name: Create Beanstalk application version
+        env:
+          EB_APP_NAME: ${{ secrets.EB_APP_NAME }}
+          EB_BUCKET: ${{ secrets.EB_BUCKET }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+        run: |
+          aws elasticbeanstalk create-application-version \
+            --application-name "$EB_APP_NAME" \
+            --version-label "github-${{ github.run_id }}" \
+            --source-bundle S3Bucket="$EB_BUCKET",S3Key="github-${{ github.run_id }}-app.zip" \
+            --region "$AWS_REGION"
+
+      - name: Update Beanstalk environment
+        env:
+          EB_ENV_NAME: ${{ secrets.EB_ENV_NAME }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+        run: |
+          aws elasticbeanstalk update-environment --environment-name "$EB_ENV_NAME" --version-label "github-${{ github.run_id }}" --region "$AWS_REGION"
