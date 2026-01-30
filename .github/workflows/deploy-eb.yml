@@ -25,6 +25,16 @@ jobs:
           python3 -m pip install --upgrade --user awscli
           echo "${HOME}/.local/bin" >> $GITHUB_PATH
 
+      - name: Setup Node.js and build
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies and build
+        run: |
+          npm ci
+          npm run build
+
       - name: Zip application
         run: |
           # Exclude large or sensitive files
