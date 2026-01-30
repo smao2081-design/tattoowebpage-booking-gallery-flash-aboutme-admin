@@ -30,12 +30,7 @@ jobs:
           # Exclude large or sensitive files
           zip -r app.zip . -x node_modules/**\* public/uploads/**\* .git/**\* .env/**\* server.log
 
-      - name: Upload artifact to S3
-        env:
-          EB_BUCKET: ${{ secrets.EB_BUCKET }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-        run: |
-          aws s3 cp app.zip s3://${EB_BUCKET}/app-${{ github.run_id }}.zip --region ${AWS_REGION}
+
 
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v20
@@ -49,4 +44,4 @@ jobs:
           # Reference the already-uploaded S3 object by providing the
           # existing bucket name and the S3 key as `deployment_package`.
           existing_bucket_name: ${{ secrets.EB_BUCKET }}
-          deployment_package: app-${{ github.run_id }}.zip
+          deployment_package: app.zip
