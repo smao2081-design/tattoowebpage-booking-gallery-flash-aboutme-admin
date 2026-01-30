@@ -41,6 +41,14 @@ jobs:
           npm prune --production || true
           du -sh node_modules || true
 
+          # Ensure Next.js server compatibility: some Next builds put server files under
+          # `dist/server` while the CLI expects `server/require-hook`. Add a small shim
+          # so `require('../server/require-hook')` resolves at runtime on the instance.
+          if [ -d node_modules/next ] && [ ! -f node_modules/next/server/require-hook.js ]; then
+            mkdir -p node_modules/next/server
+            printf "module.exports = require('../dist/server/require-hook');\n" > node_modules/next/server/require-hook.js
+          fi
+
       - name: Zip application
         run: |
           # Ensure platform hooks are executable, exclude large/sensitive files
