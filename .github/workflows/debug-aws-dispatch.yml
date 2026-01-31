@@ -1,0 +1,56 @@
+name: Debug AWS credentials (dispatch)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  debug-dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Install awscli via pip
+        run: |
+          python3 -m pip install --upgrade --user awscli
+          echo "${HOME}/.local/bin" >> $GITHUB_PATH
+
+      - name: Describe Elastic Beanstalk environments
+        run: |
+          aws elasticbeanstalk describe-environments --application-name "${{ secrets.EB_APP_NAME }}" --environment-names "${{ secrets.EB_ENV_NAME }}" --region "${{ secrets.AWS_REGION }}" || true
+
+      - name: Request and retrieve instance logs (tail)
+        run: |
+          aws elasticbeanstalk request-environment-info --environment-name "${{ secrets.EB_ENV_NAME }}" --info-type tail --region "${{ secrets.AWS_REGION }}" || true
+          sleep 5
+          aws elasticbeanstalk retrieve-environment-info --environment-name "${{ secrets.EB_ENV_NAME }}" --info-type tail --region "${{ secrets.AWS_REGION }}" --output json > envinfo.json || true
+
+      - name: Download and print tail logs
+        run: |
+          if [ ! -s envinfo.json ]; then
+            echo "envinfo.json missing or empty; no tail logs available."; exit 0
+          fi
+          python3 - <<'PY'
+import json,sys,urllib.request
+info=json.load(open('envinfo.json'))
+for e in info.get('EnvironmentInfo',[]):
+    url=e.get('Message')
+    if not url:
+        continue
+    print('---- FETCHING: '+url)
+    try:
+        resp=urllib.request.urlopen(url)
+        data=resp.read().decode('utf-8', 'replace')
+        lines=data.splitlines()
+        for ln in lines[:400]:
+            print(ln)
+    except Exception as ex:
+        print('FETCH ERROR:', ex)
+PY
