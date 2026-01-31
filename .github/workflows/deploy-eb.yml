@@ -47,7 +47,7 @@ jobs:
           if [ -d node_modules/next ] && [ ! -f node_modules/next/server/require-hook.js ]; then
             mkdir -p node_modules/next/server
             printf "module.exports = require('../dist/server/require-hook');\n" > node_modules/next/server/require-hook.js
-          fi
+          fi    
 
       - name: Zip application
         run: |
