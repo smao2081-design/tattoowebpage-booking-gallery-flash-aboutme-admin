@@ -78,9 +78,3 @@ jobs:
               except Exception as ex:
                   print('FETCH ERROR:', ex)
           PY
-
-# workflow refresh (remote-branch): 2026-01-31T00:12:09Z
-
-# ci-refresh: 2026-01-31T00:31:11.875535
-
-# workflow-touch: 2026-01-31T00:46:09Z
