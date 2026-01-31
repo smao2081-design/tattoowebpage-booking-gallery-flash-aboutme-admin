@@ -1,0 +1,1 @@
+could not create workflow dispatch event: HTTP 422: Workflow does not have 'workflow_dispatch' trigger (https://api.github.com/repos/smao2081-design/tattoowebpage-booking-gallery-flash-aboutme-admin/actions/workflows/228602713/dispatches)
