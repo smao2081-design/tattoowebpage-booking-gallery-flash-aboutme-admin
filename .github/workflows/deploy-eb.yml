@@ -76,11 +76,11 @@ jobs:
           # Print archive contents for debugging (use Python to avoid relying on system unzip)
           echo "Contents of app.zip:" 
           python3 - <<'PY'
-import zipfile, sys
-with zipfile.ZipFile('app.zip') as z:
-    for info in z.infolist():
-        print(info.filename)
-PY
+          import zipfile, sys
+          with zipfile.ZipFile('app.zip') as z:
+              for info in z.infolist():
+                  print(info.filename)
+          PY
 
       - name: Upload artifact to S3 and deploy to Elastic Beanstalk
         env:
