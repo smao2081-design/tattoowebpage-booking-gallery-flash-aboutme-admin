@@ -5,14 +5,20 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
-  // Override default ignores of eslint-config-next.
-  globalIgnores([
-    // Default ignores of eslint-config-next:
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
-  ]),
+  // Prefer the `ignores` property so ESLint stops warning about .eslintignore
+  {
+    ignores: ["server/**"]
+  },
+  // Additional override: explicitly allow CommonJS `require()` in server JS,
+  // and don't treat unused error variables as errors there.
+  {
+    files: ["server/**/*.js", "server/**/*.cjs"],
+    rules: {
+      "@typescript-eslint/no-require-imports": "off",
+      "@typescript-eslint/no-unused-vars": ["warn", { "varsIgnorePattern": \"^_\", \"argsIgnorePattern\": \"^_\" }],
+      "no-unused-vars": ["warn", { "varsIgnorePattern": \"^_\", \"argsIgnorePattern\": \"^_\" }]
+    }
+  }
 ]);
 
 export default eslintConfig;
