@@ -49,63 +49,61 @@ jobs:
             printf "module.exports = require('../dist/server/require-hook');\n" > node_modules/next/server/require-hook.js
           fi
 
-        
-
-        - name: Zip application
-          run: |
-            set -euo pipefail
-            # Ensure platform hooks are executable and show what will be included
-            chmod -R +x .platform/hooks || true
-            echo "Listing files at repo root (helpful for debugging artifact contents):"
-            ls -la . || true
-            echo "Listing .platform (if present):"
-            [ -d .platform ] && ls -la .platform || true
-            echo ".next size (if present):"
-            [ -d .next ] && du -sh .next || true
-            echo "node_modules size (if present):"
-            [ -d node_modules ] && du -sh node_modules || true
-
-            # Fail early if the production build is missing. This prevents
-            # deploying a bundle that needs on-instance builds which can OOM.
-            if [ ! -d .next ]; then
-              echo "ERROR: .next directory missing. Ensure 'npm run build' produced .next before packaging." >&2
-              exit 1
-            fi
-
-            # Create zip and explicitly include dotfiles/directories; exclude large/sensitive files.
-            zip -r app.zip . .next .platform -x "public/uploads/*" ".git/*" ".env/*" "server.log"
-
-            # Print archive contents for debugging (use Python to avoid relying on system unzip)
-            echo "Contents of app.zip:" 
-            python3 - <<'PY'
-  import zipfile,sys
-  z=zipfile.ZipFile('app.zip')
-  print('\n'.join(z.namelist()[:200]))
-  PY
-
-
-      - name: Upload artifact to S3
-        env:
-          EB_BUCKET: ${{ secrets.EB_BUCKET }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
+      - name: Zip application
         run: |
-          aws s3 cp app.zip s3://$EB_BUCKET/github-${{ github.run_id }}-app.zip --region $AWS_REGION
+          set -euo pipefail
+          # Ensure platform hooks are executable and show what will be included
+          chmod -R +x .platform/hooks || true
+          echo "Listing files at repo root (helpful for debugging artifact contents):"
+          ls -la . || true
+          echo "Listing .platform (if present):"
+          [ -d .platform ] && ls -la .platform || true
+          echo ".next size (if present):"
+          [ -d .next ] && du -sh .next || true
+          echo "node_modules size (if present):"
+          [ -d node_modules ] && du -sh node_modules || true
 
-      - name: Create Beanstalk application version
+          # Fail early if the production build is missing. This prevents
+          # deploying a bundle that needs on-instance builds which can OOM.
+          if [ ! -d .next ]; then
+            echo "ERROR: .next directory missing. Ensure 'npm run build' produced .next before packaging." >&2
+            exit 1
+          fi
+
+          # Create zip and explicitly include dotfiles/directories; exclude large/sensitive files.
+          zip -r app.zip . .next .platform -x "public/uploads/*" ".git/*" ".env/*" "server.log"
+
+          # Print archive contents for debugging (use Python to avoid relying on system unzip)
+          echo "Contents of app.zip:" 
+          python3 - <<'PY'
+import zipfile, sys
+with zipfile.ZipFile('app.zip') as z:
+    for info in z.infolist():
+        print(info.filename)
+PY
+
+      - name: Upload artifact to S3 and deploy to Elastic Beanstalk
         env:
+          S3_BUCKET: ${{ secrets.EB_S3_BUCKET }}
+          S3_KEY: "deployments/${{ github.sha }}.zip"
           EB_APP_NAME: ${{ secrets.EB_APP_NAME }}
-          EB_BUCKET: ${{ secrets.EB_BUCKET }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-        run: |
-          aws elasticbeanstalk create-application-version \
-            --application-name "$EB_APP_NAME" \
-            --version-label "github-${{ github.run_id }}" \
-            --source-bundle S3Bucket="$EB_BUCKET",S3Key="github-${{ github.run_id }}-app.zip" \
-            --region "$AWS_REGION"
-
-      - name: Update Beanstalk environment
-        env:
           EB_ENV_NAME: ${{ secrets.EB_ENV_NAME }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
         run: |
-          aws elasticbeanstalk update-environment --environment-name "$EB_ENV_NAME" --version-label "github-${{ github.run_id }}" --region "$AWS_REGION"
+          if [ -z "${S3_BUCKET:-}" ] || [ -z "${EB_APP_NAME:-}" ] || [ -z "${EB_ENV_NAME:-}" ]; then
+            echo "ERROR: EB_S3_BUCKET, EB_APP_NAME, and EB_ENV_NAME secrets must be set." >&2
+            exit 1
+          fi
+
+          # Upload artifact to S3
+          aws s3 cp app.zip "s3://${S3_BUCKET}/${S3_KEY}"
+
+          # Create a new application version in Elastic Beanstalk
+          aws elasticbeanstalk create-application-version \
+            --application-name "${EB_APP_NAME}" \
+            --version-label "${GITHUB_RUN_ID:-${GITHUB_SHA}}" \
+            --source-bundle S3Bucket="${S3_BUCKET}",S3Key="${S3_KEY}"
+
+          # Update environment to the new version (deploy)
+          aws elasticbeanstalk update-environment \
+            --environment-name "${EB_ENV_NAME}" \
+            --version-label "${GITHUB_RUN_ID:-${GITHUB_SHA}}"
