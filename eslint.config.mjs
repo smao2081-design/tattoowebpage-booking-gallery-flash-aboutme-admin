@@ -15,8 +15,8 @@ const eslintConfig = defineConfig([
     files: ["server/**/*.js", "server/**/*.cjs"],
     rules: {
       "@typescript-eslint/no-require-imports": "off",
-      "@typescript-eslint/no-unused-vars": ["warn", { "varsIgnorePattern": \"^_\", \"argsIgnorePattern\": \"^_\" }],
-      "no-unused-vars": ["warn", { "varsIgnorePattern": \"^_\", \"argsIgnorePattern\": \"^_\" }]
+      "@typescript-eslint/no-unused-vars": ["warn", { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" }],
+      "no-unused-vars": ["warn", { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" }]
     }
   }
 ]);
