@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  next:
+    build:
+      context: .
+      target: builder
+    command: npm run dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      NODE_ENV: development
+
+  upload:
+    build:
+      context: .
+      target: builder
+    command: node server/server.js
+    ports:
+      - "15500:15500"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      NODE_ENV: development
+      PORT: 15500
