@@ -1,18 +1,28 @@
-version: '3.8'
+version: "3.8"
 services:
-  redis:
-    image: redis:7
-    restart: unless-stopped
+  next:
+    build:
+      context: .
+      target: builder
+    command: npm run dev
     ports:
-      - "6379:6379"
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      NODE_ENV: development
 
-  app:
-    build: .
-    restart: unless-stopped
-    env_file: .env
+  upload:
+    build:
+      context: .
+      target: builder
+    command: node server/server.js
     ports:
       - "15500:15500"
     volumes:
-      - ./public/uploads:/usr/src/app/public/uploads
-    depends_on:
-      - redis
+      - .:/app
+      - /app/node_modules
+    environment:
+      NODE_ENV: development
+      PORT: 15500
