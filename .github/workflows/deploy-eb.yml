@@ -76,11 +76,11 @@ jobs:
           # Print archive contents for debugging (use Python to avoid relying on system unzip)
           echo "Contents of app.zip:" 
           python3 - <<'PY'
-import zipfile, sys
-with zipfile.ZipFile('app.zip') as z:
-    for info in z.infolist():
-        print(info.filename)
-PY
+          import zipfile, sys
+          with zipfile.ZipFile('app.zip') as z:
+              for info in z.infolist():
+                  print(info.filename)
+          PY
 
       - name: Upload artifact to S3 and deploy to Elastic Beanstalk
         env:
@@ -93,6 +93,9 @@ PY
             echo "ERROR: EB_S3_BUCKET, EB_APP_NAME, and EB_ENV_NAME secrets must be set." >&2
             exit 1
           fi
+
+          # Ensure aws is available on PATH (installed into ~/.local/bin earlier)
+          export PATH="$HOME/.local/bin:$PATH"
 
           # Upload artifact to S3
           aws s3 cp app.zip "s3://${S3_BUCKET}/${S3_KEY}"
