@@ -135,7 +135,7 @@
                 return;
             }
             submitBtn.disabled = true;
-            const apiBase = (window.apiBase && String(window.apiBase)) || 'http://127.0.0.1:15500';
+            const apiBase = (window.apiBase && String(window.apiBase)) || '';
             try {
                 const res = await fetch(apiBase.replace(/\/$/, '') + '/api/login', {
                     method: 'POST',
@@ -151,7 +151,7 @@
                     const finalTarget = modalTarget;
                     hideModal();
                     // Navigate to the upload server (apiBase) to avoid navigating relative to whatever static file server is used
-                    const apiBase = (window.apiBase && String(window.apiBase)) || 'http://127.0.0.1:15500';
+                    const apiBase = (window.apiBase && String(window.apiBase)) || '';
                     function mapTargetToPath(t) {
                         if (!t) return '/';
                         if (/^https?:\/\//i.test(t)) return t; // absolute
