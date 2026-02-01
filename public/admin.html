@@ -102,7 +102,8 @@
         // Basic client-side auth helper (convenience only)
         // Ensure admin UI targets the upload server when the page is served from another origin.
         // Change this if your upload server is hosted elsewhere.
-        window.apiBase = window.apiBase || 'http://127.0.0.1:15500';
+        // Default to same-origin so cookies set by /api/login apply to this origin.
+        window.apiBase = window.apiBase || '';
         let isSignedIn = false;
 
         function setSignedIn(user){
