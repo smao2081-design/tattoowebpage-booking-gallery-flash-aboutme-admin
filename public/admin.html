@@ -103,7 +103,8 @@
         // Ensure admin UI targets the upload server when the page is served from another origin.
         // Change this if your upload server is hosted elsewhere.
         // Default to same-origin so cookies set by /api/login apply to this origin.
-        window.apiBase = window.apiBase || '';
+        // If the static admin UI is hosted separately, point it to the running EB API.
+        window.apiBase = window.apiBase || 'https://Tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com';
         let isSignedIn = false;
 
         function setSignedIn(user){
