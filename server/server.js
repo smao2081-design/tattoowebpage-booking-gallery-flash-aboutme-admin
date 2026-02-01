@@ -91,7 +91,8 @@ app.use(express.json());
 // Serve the admin page via the protected `/admin` endpoint (for direct server-side access),
 // but allow the static `/admin.html` to be served so client-side JS can apply stored credentials
 // and call protected APIs without causing the browser's Basic-auth prompt on navigation.
-app.get('/admin', requireAdmin, (req, res) => {
+// Serve the admin page without server-side Basic auth prompt
+app.get('/admin', (req, res) => {
   const publicAdmin = path.join(publicDir, 'admin.html');
   const rootAdmin = path.join(__dirname, '..', 'admin.html');
   let fileToSend = null;
@@ -155,7 +156,8 @@ app.post('/api/passcode/logout', (req, res) => {
 app.get('/health', (req, res) => res.json({ ok: true, uptime: process.uptime() }));
 
 // Serve the admin landing page but protect it with the server-side passcode
-app.get(['/adminmain', '/adminmain.html'], requirePasscode, (req, res) => {
+// Serve the admin landing page publicly (no passcode prompt)
+app.get(['/adminmain', '/adminmain.html'], (req, res) => {
   const adminMain = path.join(publicDir, 'adminmain.html');
   if (!fs.existsSync(adminMain)) return res.status(404).send('Admin main page not found');
   res.sendFile(adminMain);
@@ -163,7 +165,8 @@ app.get(['/adminmain', '/adminmain.html'], requirePasscode, (req, res) => {
 
 // Protect the static `admin.html` so it is not publicly accessible without credentials.
 // Serve it only via the protected route so admin actions remain gated server-side.
-app.get(['/admin.html'], requireAdmin, (req, res) => {
+// Serve the static `admin.html` publicly (no server-side prompt)
+app.get(['/admin.html'], (req, res) => {
   const adminFile = path.join(publicDir, 'admin.html');
   if (!fs.existsSync(adminFile)) return res.status(404).send('Admin page not found');
   res.sendFile(adminFile);
@@ -258,6 +261,8 @@ async function requireAdmin(req, res, next) {
 app.post('/api/login', express.json(), (req, res) => {
   const user = (req.body && req.body.user) ? String(req.body.user) : '';
   const pass = (req.body && req.body.pass) ? String(req.body.pass) : '';
+  // Debug: log incoming login attempts (avoid logging the password)
+  try { console.log('login attempt:', { user, origin: req.headers.origin || req.headers.host || '', ip: req.ip || req.connection?.remoteAddress || '' }); } catch(e) {}
   if (!user || !pass) return res.status(400).json({ error: 'Missing credentials' });
   if (user === ADMIN_USER && pass === ADMIN_PASS) {
     const token = crypto.randomBytes(32).toString('hex');
@@ -305,8 +310,8 @@ const storage = multer.diskStorage({
     cb(null, safe);
   }
 });
-// Allow larger uploads if needed. Current limit: 20MB per file.
-const upload = multer({ storage, limits: { fileSize: 20 * 1024 * 1024 } }); // 20MB limit per file
+// Allow larger uploads if needed. Current limit: 50MB per file.
+const upload = multer({ storage, limits: { fileSize: 50 * 1024 * 1024 } }); // 50MB limit per file
 
 // Booking form handler: accept form data and optional attachment, send email via nodemailer
 const bookingUpload = multer({ dest: path.join(__dirname, '..', 'tmp') });
