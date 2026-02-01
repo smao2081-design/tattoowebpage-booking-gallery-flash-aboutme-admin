@@ -1,0 +1,20 @@
+# Exclude common heavy or local files
+node_modules/
+.elasticbeanstalk/
+eb-tmp/
+*.log
+.DS_Store
+.git
+.gitignore
+
+# Ensure .platform hooks are included in the EB source bundle
+!.platform/
+!.platform/**
+
+# Allow key app files through (adjust if your layout differs)
+!package.json
+!package-lock.json
+!public/
+!pages/
+!src/
+!next.config.js
