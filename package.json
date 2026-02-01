@@ -8,7 +8,8 @@
     "start": "node server/server.js",
     "start:next": "next start",
     "lint": "eslint",
-    "server": "node server/server.js"
+    "server": "node server/server.js",
+    "postinstall": "next build"
   },
   "dependencies": {
     "next": "16.1.1",
@@ -33,5 +34,8 @@
     "eslint-config-next": "16.1.1",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
