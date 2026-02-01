@@ -439,11 +439,13 @@ app.post('/api/upload', requireAdmin, upload.array('images', 100), async (req, r
                 const medPath = path.join(dir, medName);
                 // 400x300 thumbnail (cover to fill box)
                 await sharp(f.path)
+                  .rotate()
                   .resize(400, 300, { fit: 'cover' })
                   .jpeg({ quality: 80 })
                   .toFile(thumbPath);
                 // medium width (max 1200px) keep aspect ratio
                 await sharp(f.path)
+                  .rotate()
                   .resize({ width: 1200, withoutEnlargement: true })
                   .jpeg({ quality: 86 })
                   .toFile(medPath);

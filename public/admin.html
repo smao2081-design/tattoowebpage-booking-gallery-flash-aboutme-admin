@@ -104,7 +104,14 @@
         // Change this if your upload server is hosted elsewhere.
         // Default to same-origin so cookies set by /api/login apply to this origin.
         // If the static admin UI is hosted separately, point it to the running EB API.
-        window.apiBase = window.apiBase || 'https://Tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com';
+        // Default apiBase: prefer the local backend when served from static dev server on :5500
+        if (!window.apiBase) {
+            if (location.hostname === '127.0.0.1' && location.port === '5500') {
+                window.apiBase = 'http://127.0.0.1:5000';
+            } else {
+                window.apiBase = location.origin;
+            }
+        }
         let isSignedIn = false;
 
         function setSignedIn(user){
@@ -190,7 +197,7 @@
                 imgs.forEach(i => {
                     const card = document.createElement('div'); card.className = 'card';
                     const img = document.createElement('img');
-                    let src = i.url || '';
+                    let src = i.medium || i.thumb || i.url || '';
                     if (!/^https?:\/\//i.test(src)) {
                         const base = (window.apiBase && window.apiBase.replace(/\/$/, '')) || (location.origin || '');
                         src = base + (src.startsWith('/') ? src : '/' + src);
@@ -277,6 +284,8 @@
                         const base = (window.apiBase && window.apiBase.replace(/\/$/, '')) || (location.origin || '');
                         src = base + (src.startsWith('/') ? src : '/' + src);
                     }
+                        // prefer medium-sized image when available
+                        src = i.medium || i.thumb || src;
                     img.src = src;
                     const meta = document.createElement('div'); meta.className = 'meta'; meta.textContent = i.name || '';
                     card.appendChild(img);

@@ -188,7 +188,7 @@
                 imgs.forEach(i => {
                     const card = document.createElement('div'); card.className = 'card';
                     const img = document.createElement('img');
-                    let src = i.url || '';
+                    let src = i.medium || i.thumb || i.url || '';
                     if (!/^https?:\/\//i.test(src)) {
                         const base = (window.apiBase && window.apiBase.replace(/\/$/, '')) || (location.origin || '');
                         src = base + (src.startsWith('/') ? src : '/' + src);
