@@ -514,7 +514,9 @@ app.get('/api/images', (req, res) => {
         const { ListObjectsV2Command } = require('@aws-sdk/client-s3');
         const prefix = target ? (target + '/') : '';
         const out = await s3Client.send(new ListObjectsV2Command({ Bucket: S3_BUCKET, Prefix: prefix }));
-        const contents = out && out.Contents ? out.Contents : [];
+        let contents = out && out.Contents ? out.Contents : [];
+        // Exclude generated thumbnails/medium files from S3 listing
+        contents = contents.filter(c => { const bn = path.basename(c.Key || ''); return !/-(thumb|med)\.jpg$/i.test(bn); });
         // map to { url, name } sorted by LastModified
         const items = contents.map(c => ({ key: c.Key, name: path.basename(c.Key), mtime: c.LastModified ? c.LastModified.getTime() : 0 }));
         items.sort((a, b) => a.mtime - b.mtime);
@@ -540,7 +542,9 @@ app.get('/api/images', (req, res) => {
           return st.isFile() ? { file: f, mtime: st.mtimeMs } : null;
         } catch (e) { return null; }
       }));
-      const filtered = stats.filter(Boolean);
+      let filtered = stats.filter(Boolean);
+      // Exclude generated thumbnails and medium images from the main listing
+      filtered = filtered.filter(s => !/-(thumb|med)\.jpg$/i.test(s.file));
       filtered.sort((a, b) => a.mtime - b.mtime);
       const base = '/uploads' + (target ? ('/' + target) : '');
       const images = filtered.map(s => {
