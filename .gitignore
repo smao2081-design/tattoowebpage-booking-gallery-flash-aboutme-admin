@@ -47,3 +47,8 @@ server.log
 public/uploads
 server.log
 repo-mirror.git
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
