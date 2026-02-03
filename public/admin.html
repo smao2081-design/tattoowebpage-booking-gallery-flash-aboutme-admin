@@ -129,6 +129,8 @@
             try{
                 const res = await fetch((window.apiBase || '') + '/api/login', { method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ user: u, pass: p }) });
                 if (!res.ok) { const j = await res.json().catch(()=>null); alert('Sign in failed: ' + (j?.error || res.status)); return; }
+                const j = await res.json().catch(()=>null);
+                if (j && j.token) window.apiToken = j.token;
                 setSignedIn(u);
             }catch(e){ alert('Sign in error'); }
         });
@@ -146,6 +148,9 @@
             opts = opts || {};
             // use `include` so HttpOnly cookies are sent to the upload server when hosted on another origin
             opts.credentials = opts.credentials || 'include';
+            // attach Bearer token when available (fallback when cookies aren't used)
+            opts.headers = opts.headers || {};
+            if (window.apiToken && !opts.headers.Authorization) opts.headers.Authorization = 'Bearer ' + window.apiToken;
             // if url is relative and an apiBase is known, prefix it
             if (!/^https?:\/\//i.test(url)) {
                 const base = window.apiBase || null;

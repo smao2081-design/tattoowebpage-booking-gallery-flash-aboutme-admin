@@ -28,7 +28,7 @@ jobs:
       - name: Setup Node.js and build
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
 
       - name: Install dependencies and build
         run: |
@@ -71,7 +71,8 @@ jobs:
           fi
 
           # Create zip and explicitly include dotfiles/directories; exclude large/sensitive files.
-          zip -r app.zip . .next .platform -x "public/uploads/*" ".git/*" ".env/*" "server.log"
+          # Explicitly include node_modules to ensure run-time dependencies and any shims are present
+          zip -r app.zip . .next .platform node_modules -x "public/uploads/*" ".git/*" ".env/*" "server.log"
 
           # Print archive contents for debugging (use Python to avoid relying on system unzip)
           echo "Contents of app.zip:" 

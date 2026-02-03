@@ -1,0 +1,4 @@
+Retrieving logs...
+Logs were saved to /Users/Shared/Projects/my-app/.elasticbeanstalk/logs/260202_174247
+Logs were saved to /Users/Shared/Projects/my-app/.elasticbeanstalk/logs/260202_174247
+Updated symlink at /Users/Shared/Projects/my-app/.elasticbeanstalk/logs/latest
