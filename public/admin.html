@@ -198,8 +198,11 @@
                 }
                 const imgs = await res.json();
                 g.innerHTML = '';
+                // Client-side filter: only show image files (or items with derived thumbs/mediums)
+                const allowedRe = /\.(jpg|jpeg|png|gif|webp|tif|tiff|heic|heif)(?:\?|$)/i;
+                const imgsToShow = (imgs || []).filter(i => i.thumb || i.medium || allowedRe.test((i.url || i.name || '').split('?')[0]));
                 if (!imgs || imgs.length === 0) { g.textContent = 'No uploads'; return; }
-                imgs.forEach(i => {
+                imgsToShow.forEach(i => {
                     const card = document.createElement('div'); card.className = 'card';
                     const img = document.createElement('img');
                     let src = i.medium || i.thumb || i.url || '';
@@ -280,8 +283,11 @@
                 }
                 const imgs = await res.json();
                 g.innerHTML = '';
+                // Client-side filter for flash uploads
+                const allowedRe2 = /\.(jpg|jpeg|png|gif|webp|tif|tiff|heic|heif)(?:\?|$)/i;
+                const imgsToShow2 = (imgs || []).filter(i => i.thumb || i.medium || allowedRe2.test((i.url || i.name || '').split('?')[0]));
                 if (!imgs || imgs.length === 0) { g.textContent = 'No flash uploads'; return; }
-                imgs.forEach(i => {
+                imgsToShow2.forEach(i => {
                     const card = document.createElement('div'); card.className = 'card';
                     const img = document.createElement('img');
                     let src = i.url || '';

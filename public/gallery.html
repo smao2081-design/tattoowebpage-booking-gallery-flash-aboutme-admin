@@ -130,7 +130,10 @@
           if (staticBlock) staticBlock.remove();
           // ensure gallery itself is cleared and used as the grid container
           galleryEl.innerHTML = '';
-          serverImages.forEach(item => {
+          // Client-side filter: only show image files or items that include derived thumbs/mediums
+          const allowedRe = /\.(jpg|jpeg|png|gif|webp|tif|tiff|heic|heif)(?:\?|$)/i;
+          const imagesToShow = (serverImages || []).filter(item => item.thumb || item.medium || allowedRe.test((item.url || item.name || '').split('?')[0]));
+          imagesToShow.forEach(item => {
             const div = document.createElement('div'); div.className='gallery-item';
             const img = document.createElement('img');
             // Prefer thumbnail URL if provided by API (e.g., 400x300). Fallback to full image.
