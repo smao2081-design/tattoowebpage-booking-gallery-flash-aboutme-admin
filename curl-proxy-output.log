@@ -1,0 +1,21 @@
+*   Trying 54.160.12.244:80...
+* Connected to tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com (54.160.12.244) port 80
+> GET /api/image?key=1770082570445-back_2.jpeg HTTP/1.1
+> Host: tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com
+> User-Agent: curl/8.4.0
+> Accept: */*
+> 
+< HTTP/1.1 404 Not Found
+< Server: nginx
+< Date: Tue, 03 Feb 2026 02:44:31 GMT
+< Content-Type: text/html; charset=utf-8
+< Content-Length: 148
+< Connection: keep-alive
+< X-Powered-By: Express
+< Vary: Origin
+< Access-Control-Allow-Credentials: true
+< Content-Security-Policy: default-src 'none'
+< X-Content-Type-Options: nosniff
+< 
+{ [148 bytes data]
+* Connection #0 to host tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com left intact

@@ -13,7 +13,6 @@ INFO:   +adding: ./api_workflows.json
 INFO:   +adding: ./gh_run_dispatch.out
 INFO:   +adding: ./main_page.html
 INFO:   +adding: ./admin.html
-INFO:   +adding: ./eb-upload-response.json
 INFO:   -skipping: ./eb-deploy-patch.log
 INFO:   +adding: ./about.html
 INFO:   +adding: ./eb-remote-logs.txt
@@ -32,12 +31,10 @@ INFO:   +adding: ./api_workflows.err
 INFO:   +adding: ./next-env.d.ts
 INFO:   +adding: ./README.md
 INFO:   +adding: ./gallery.html
-INFO:   +adding: ./eb-logs-all.txt
 INFO:   +adding: ./eb-logs.txt
 INFO:   -skipping: ./.gitignore
 INFO:   +adding: ./package-lock.json
 INFO:   +adding: ./package.json
-INFO:   +adding: ./eb-upload2.json
 INFO:   +adding: ./.env
 INFO:   +adding: ./book.html
 INFO:   +adding: ./eb-logs-after-policy.txt
@@ -27266,12 +27263,6 @@ INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203733/i-043264f4a2ab71be8/va
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203733/i-043264f4a2ab71be8/var/log/healthd
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203733/i-043264f4a2ab71be8/var/log/nginx
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203733/i-043264f4a2ab71be8/tmp
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_212204
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_212204/i-03ed6aaea614b22bd
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_212204/i-03ed6aaea614b22bd/var
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_212204/i-03ed6aaea614b22bd/var/log
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_212204/i-03ed6aaea614b22bd/var/log/healthd
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_212204/i-03ed6aaea614b22bd/var/log/nginx
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_185932
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_185932/i-043264f4a2ab71be8
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_185932/i-043264f4a2ab71be8/var
@@ -27822,15 +27813,15 @@ INFO:   +adding: ./.platform/hooks/postdeploy/99_restore_packagejson.sh
 INFO:  +adding: ./.platform/hooks/prebuild/
 INFO:   +adding: ./.platform/hooks/prebuild/01_npm_ci_and_build.sh
 INFO:   +adding: ./.platform/hooks/prebuild/enable-swap.sh
-INFO: Uploading archive to s3 location: tattoo-app/app-6ff1-260202_231500195213-stage-260202_231500195348.zip
+INFO: Uploading archive to s3 location: tattoo-app/app-6ff1-260202_211132261508-stage-260202_211132261656.zip
 Alert: The platform version that your environment is using isn't recommended. There's a recommended version in the same platform branch.
 
-Creating application version archive "app-6ff1-260202_231500195213-stage-260202_231500195348".
+Creating application version archive "app-6ff1-260202_211132261508-stage-260202_211132261656".
 Uploading: [--------------------------------------------------] 0% Uploading: [#########################-------------------------] 50% Uploading: [##################################################] 100% Done...
-INFO: Creating AppVersion app-6ff1-260202_231500195213-stage-260202_231500195348
-2026-02-03 05:15:12    INFO    Environment update is starting.
-2026-02-03 05:15:17    INFO    Deploying new version to instance(s).
-2026-02-03 05:15:22    WARN    Instance deployment: The deployment used the default Node.js version for your platform version instead of the Node.js version included in your 'package.json'.
-2026-02-03 05:16:46    INFO    Instance deployment completed successfully.
-2026-02-03 05:16:51    INFO    New application version was deployed to running EC2 instances.
-2026-02-03 05:16:51    INFO    Environment update completed successfully.
+INFO: Creating AppVersion app-6ff1-260202_211132261508-stage-260202_211132261656
+2026-02-03 03:11:42    INFO    Environment update is starting.
+2026-02-03 03:11:47    INFO    Deploying new version to instance(s).
+2026-02-03 03:11:51    WARN    Instance deployment: The deployment used the default Node.js version for your platform version instead of the Node.js version included in your 'package.json'.
+2026-02-03 03:13:08    INFO    Instance deployment completed successfully.
+2026-02-03 03:13:13    INFO    New application version was deployed to running EC2 instances.
+2026-02-03 03:13:13    INFO    Environment update completed successfully.

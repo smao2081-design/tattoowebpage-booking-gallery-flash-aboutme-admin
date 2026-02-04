@@ -1,0 +1,2 @@
+
+An error occurred (AccessDenied) when calling the CreateChangeSet operation: User: arn:aws:iam::012169729733:user/tattoo-app-deploy is not authorized to perform: cloudformation:CreateChangeSet on resource: arn:aws:cloudformation:us-east-1:012169729733:stack/myapp-cloudfront-oac/* because no identity-based policy allows the cloudformation:CreateChangeSet action

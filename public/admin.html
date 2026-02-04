@@ -205,11 +205,15 @@
                 imgsToShow.forEach(i => {
                     const card = document.createElement('div'); card.className = 'card';
                     const img = document.createElement('img');
-                    let src = i.medium || i.thumb || i.url || '';
-                    if (!/^https?:\/\//i.test(src)) {
-                        const base = (window.apiBase && window.apiBase.replace(/\/$/, '')) || (location.origin || '');
-                        src = base + (src.startsWith('/') ? src : '/' + src);
-                    }
+                        // Prefer derived S3 object keys (medKey/thumbKey) or server proxy when available
+                        let src = '';
+                        if (i.medKey) src = '/api/image?key=' + encodeURIComponent(i.medKey);
+                        else if (i.thumbKey) src = '/api/image?key=' + encodeURIComponent(i.thumbKey);
+                        else src = i.medium || i.thumb || i.url || '';
+                        if (src && !/^https?:\/\//i.test(src) && !src.startsWith('/api/')) {
+                            const base = (window.apiBase && window.apiBase.replace(/\/$/, '')) || (location.origin || '');
+                            src = base + (src.startsWith('/') ? src : '/' + src);
+                        }
                     img.src = src;
                     const meta = document.createElement('div'); meta.className = 'meta'; meta.textContent = i.name || '';
                     card.appendChild(img);

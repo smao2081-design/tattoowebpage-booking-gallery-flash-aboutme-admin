@@ -5,23 +5,18 @@ INFO: Zipping up folder at location: /Users/Shared/Projects/my-app
 INFO:  +adding: .//
 INFO:   +adding: ./gh_dbg.json
 INFO:   +adding: ./gh_run_list.err
-INFO:   -skipping: ./eb-deploy-proxy.log
-INFO:   -skipping: ./eb-deploy-client-filter.log
 INFO:   +adding: ./debug_logs.err
 INFO:   +adding: ./eb-remote-logs-2.txt
 INFO:   +adding: ./api_workflows.json
 INFO:   +adding: ./gh_run_dispatch.out
 INFO:   +adding: ./main_page.html
 INFO:   +adding: ./admin.html
-INFO:   +adding: ./eb-upload-response.json
-INFO:   -skipping: ./eb-deploy-patch.log
 INFO:   +adding: ./about.html
 INFO:   +adding: ./eb-remote-logs.txt
 INFO:   +adding: ./postcss.config.mjs
 INFO:   +adding: ./Dockerfile
 INFO:   +adding: ./admin.jsx
 INFO:   -skipping: ./eb-deploy-listing-fix.log
-INFO:   -skipping: ./eb-redeploy.log
 INFO:   +adding: ./debug_logs.txt
 INFO:   +adding: ./gh_run_dispatch.err
 INFO:   +adding: ./s3-policy.json
@@ -32,15 +27,11 @@ INFO:   +adding: ./api_workflows.err
 INFO:   +adding: ./next-env.d.ts
 INFO:   +adding: ./README.md
 INFO:   +adding: ./gallery.html
-INFO:   +adding: ./eb-logs-all.txt
-INFO:   +adding: ./eb-logs.txt
 INFO:   -skipping: ./.gitignore
 INFO:   +adding: ./package-lock.json
 INFO:   +adding: ./package.json
-INFO:   +adding: ./eb-upload2.json
 INFO:   +adding: ./.env
 INFO:   +adding: ./book.html
-INFO:   +adding: ./eb-logs-after-policy.txt
 INFO:   +adding: ./server.log.20260123172458.bak
 INFO:   +adding: ./run.err
 INFO:   -skipping: ./.ebignore
@@ -48,17 +39,14 @@ INFO:   +adding: ./tsconfig.json
 INFO:   +adding: ./adminmain.html
 INFO:   +adding: ./docker-compose.yml
 INFO:   +adding: ./run.out
-INFO:   -skipping: ./local-server.log
 INFO:   +adding: ./Procfile
 INFO:   +adding: ./.eslintignore
 INFO:   +adding: ./.env.example
-INFO:   -skipping: ./curl-proxy-output.log
 INFO:   -skipping: ./eb-deploy.log
 INFO:   -skipping: ./server.log
 INFO:   +adding: ./eslint.config.mjs
 INFO:   +adding: ./eslint.config.mjs.bak
 INFO:   +adding: ./thank-you.html
-INFO:   -skipping: ./eb-logs-after-redeploy.log
 INFO:   +adding: ./next.config.ts
 INFO:  +adding: ./app/
 INFO:   +adding: ./app/favicon.ico
@@ -27238,13 +27226,6 @@ INFO:   +adding: ./server/create_ethereal.js
 INFO:   -skipping: ./.elasticbeanstalk
 INFO:   -skipping: ./.elasticbeanstalk/app_versions
 INFO:   -skipping: ./.elasticbeanstalk/logs
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_201216
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_201216/i-043264f4a2ab71be8
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_201216/i-043264f4a2ab71be8/var
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_201216/i-043264f4a2ab71be8/var/log
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_201216/i-043264f4a2ab71be8/var/log/healthd
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_201216/i-043264f4a2ab71be8/var/log/nginx
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_201216/i-043264f4a2ab71be8/tmp
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_183509
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_183509/i-043264f4a2ab71be8
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_183509/i-043264f4a2ab71be8/var
@@ -27259,19 +27240,6 @@ INFO:   -skipping: ./.elasticbeanstalk/logs/260202_174247/i-043264f4a2ab71be8/va
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_174247/i-043264f4a2ab71be8/var/log/healthd
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_174247/i-043264f4a2ab71be8/var/log/nginx
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_174247/i-043264f4a2ab71be8/tmp
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203733
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203733/i-043264f4a2ab71be8
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203733/i-043264f4a2ab71be8/var
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203733/i-043264f4a2ab71be8/var/log
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203733/i-043264f4a2ab71be8/var/log/healthd
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203733/i-043264f4a2ab71be8/var/log/nginx
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203733/i-043264f4a2ab71be8/tmp
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_212204
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_212204/i-03ed6aaea614b22bd
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_212204/i-03ed6aaea614b22bd/var
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_212204/i-03ed6aaea614b22bd/var/log
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_212204/i-03ed6aaea614b22bd/var/log/healthd
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_212204/i-03ed6aaea614b22bd/var/log/nginx
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_185932
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_185932/i-043264f4a2ab71be8
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_185932/i-043264f4a2ab71be8/var
@@ -27279,13 +27247,6 @@ INFO:   -skipping: ./.elasticbeanstalk/logs/260202_185932/i-043264f4a2ab71be8/va
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_185932/i-043264f4a2ab71be8/var/log/healthd
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_185932/i-043264f4a2ab71be8/var/log/nginx
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_185932/i-043264f4a2ab71be8/tmp
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_194351
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_194351/i-043264f4a2ab71be8
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_194351/i-043264f4a2ab71be8/var
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_194351/i-043264f4a2ab71be8/var/log
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_194351/i-043264f4a2ab71be8/var/log/healthd
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_194351/i-043264f4a2ab71be8/var/log/nginx
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_194351/i-043264f4a2ab71be8/tmp
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_175007
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_175007/i-043264f4a2ab71be8
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_175007/i-043264f4a2ab71be8/var
@@ -27293,27 +27254,6 @@ INFO:   -skipping: ./.elasticbeanstalk/logs/260202_175007/i-043264f4a2ab71be8/va
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_175007/i-043264f4a2ab71be8/var/log/healthd
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_175007/i-043264f4a2ab71be8/var/log/nginx
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_175007/i-043264f4a2ab71be8/tmp
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203234
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203234/i-043264f4a2ab71be8
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203234/i-043264f4a2ab71be8/var
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203234/i-043264f4a2ab71be8/var/log
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203234/i-043264f4a2ab71be8/var/log/healthd
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203234/i-043264f4a2ab71be8/var/log/nginx
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203234/i-043264f4a2ab71be8/tmp
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_204450
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_204450/i-043264f4a2ab71be8
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_204450/i-043264f4a2ab71be8/var
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_204450/i-043264f4a2ab71be8/var/log
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_204450/i-043264f4a2ab71be8/var/log/healthd
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_204450/i-043264f4a2ab71be8/var/log/nginx
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_204450/i-043264f4a2ab71be8/tmp
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_205839
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_205839/i-043264f4a2ab71be8
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_205839/i-043264f4a2ab71be8/var
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_205839/i-043264f4a2ab71be8/var/log
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_205839/i-043264f4a2ab71be8/var/log/healthd
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_205839/i-043264f4a2ab71be8/var/log/nginx
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_205839/i-043264f4a2ab71be8/tmp
 INFO:  +adding: ./.next/
 INFO:   +adding: ./.next/fallback-build-manifest.json
 INFO:   +adding: ./.next/trace
@@ -27595,10 +27535,7 @@ INFO:   +adding: ./public/ecosystem.config.js
 INFO:   +adding: ./public/thank-you.html
 INFO:   +adding: ./public/instagramwhite.jpeg
 INFO:  +adding: ./public/uploads/
-INFO:   +adding: ./public/uploads/1770088159203-1768837795968-copy-thumb.jpg
-INFO:   +adding: ./public/uploads/1770088159203-1768837795968-copy-med.jpg
 INFO:   +adding: ./public/uploads/1768948241602-yingyanglkoi.jpeg
-INFO:   +adding: ./public/uploads/1770088159203-1768837795968-copy.jpg
 INFO:  +adding: ./public/uploads/flash/
 INFO:   +adding: ./public/uploads/flash/1768663746746-cherryblossom_copy.png
 INFO:  +adding: ./public/.github/workflows/
@@ -27625,14 +27562,11 @@ INFO:   -skipping: ./.git/FETCH_HEAD
 INFO:   -skipping: ./.git/objects/95/ff68d5dc02224608c4b23e6268c95d3b09b12a
 INFO:   -skipping: ./.git/objects/66/eb3bfd002656e39ac0206ec42f7235815b02c7
 INFO:   -skipping: ./.git/objects/3b/e5604a87a6f4c7c1b5d26879da0021a14cf22b
-INFO:   -skipping: ./.git/objects/6f/f1386ef3ddd1cd389feb7f51c8827514ff8f5a
 INFO:   -skipping: ./.git/objects/32/ef7f92a8fd3367110e1f7cea41f96b38a9bcea
-INFO:   -skipping: ./.git/objects/3d/40b60802b008c55312bbcdd91985e7346ef28a
 INFO:   -skipping: ./.git/objects/67/a7326eadf5fef57c26c96b11b06aadb4600de6
 INFO:   -skipping: ./.git/objects/67/1f4b03b203ae4b636be4a0e2665e5ea78046c2
 INFO:   -skipping: ./.git/objects/0b/76afca97ad88415e4ee1bf8ec20fd1e88018cb
 INFO:   -skipping: ./.git/objects/0b/3d96acb0c3481cc4290edf58fed8c1786ac39e
-INFO:   -skipping: ./.git/objects/0b/a83b2c3e9b6cb016d5fefba50e12d9205c0926
 INFO:   -skipping: ./.git/objects/0e/728fe6991dc23c95f0e7fcea5cb3d5ac599259
 INFO:   -skipping: ./.git/objects/60/5be67b703be5fa4c9aa27dba0aa6689e40d5f8
 INFO:   -skipping: ./.git/objects/5a/28c7edaa64cc33c87eacae6b399e6ceb25942d
@@ -27640,7 +27574,6 @@ INFO:   -skipping: ./.git/objects/5f/3a8955ee2336cb5cb65a3180d413c79b581273
 INFO:   -skipping: ./.git/objects/33/7b3f2771a8a44f1ed669dc3384578313aec371
 INFO:   -skipping: ./.git/objects/05/68c970142e5033c6a2c9ad149804878d41037b
 INFO:   -skipping: ./.git/objects/9d/79889457f2b6b95e8457ea5737b15a22e2ec3e
-INFO:   -skipping: ./.git/objects/9c/54887bfcbeebf1a7ed00d3937bc7cc283932ce
 INFO:   -skipping: ./.git/objects/b5/5fb96581f3c55f1671fc3fc9aab0ab46b1dd3b
 INFO:   -skipping: ./.git/objects/ad/cc8a45fccdb0a0f990d72011c9668a603b8c6e
 INFO:   -skipping: ./.git/objects/bb/a786a3562c31b3c3509a657fc5b647fe759138
@@ -27651,10 +27584,8 @@ INFO:   -skipping: ./.git/objects/a2/8cff3e0669c4ffce4348724699edcabbfef0cb
 INFO:   -skipping: ./.git/objects/bc/18eea16201e80c4ccc46cedc2038bc5584ed04
 INFO:   -skipping: ./.git/objects/ae/cf3edec052617297825822d09e831d48ea7e81
 INFO:   -skipping: ./.git/objects/ae/a09da44cb3b57c4a9070b197b886f572be63cf
-INFO:   -skipping: ./.git/objects/d8/0134b8bcc96ef0232ccfbc09fdd40855674474
 INFO:   -skipping: ./.git/objects/ab/3c1e76c6b6a576b2ae3a702d8b7a47099c8569
 INFO:   -skipping: ./.git/objects/ab/5f841f919df1e194a8e9b891a6a031ee1d20db
-INFO:   -skipping: ./.git/objects/e5/9eeba22e2c2ce29b998a08084d02b79ce7f87e
 INFO:   -skipping: ./.git/objects/f4/e9083afd1aa8eb3313df610746d397ec4ab6a1
 INFO:   -skipping: ./.git/objects/c0/1c393e9f65bbe9d4a4940618eeb56c75c2f450
 INFO:   -skipping: ./.git/objects/f2/5caa8e27607a8a8fb15161e4c1c00b270d0f5e
@@ -27667,7 +27598,6 @@ INFO:   -skipping: ./.git/objects/fb/bb6630d88efe3e94a27eb23c4724ad3feec9dc
 INFO:   -skipping: ./.git/objects/ed/afcfc94b20de448be8cc3673d78a1527c69396
 INFO:   -skipping: ./.git/objects/c1/f177afa610b57df8d56db241f928d13d0c52d7
 INFO:   -skipping: ./.git/objects/4e/fa35d76cc0a1a98e7f4adad81736ca1285d8ba
-INFO:   -skipping: ./.git/objects/4e/425340b648fc317f5bd238770c8bacee451d0f
 INFO:   -skipping: ./.git/objects/20/c7dc5711e238fb9bf720956cd2ed604c33a99d
 INFO:   -skipping: ./.git/objects/20/bf78f24c44a5e964e6862bafe644ea68c85999
 INFO:   -skipping: ./.git/objects/18/62e288376b2dc499e8df0019fc024bd158be3e
@@ -27740,9 +27670,7 @@ INFO:   -skipping: ./.git/objects/71/882c18f6a40374eaa7d4c55dee9fa7fd67fa2f
 INFO:   -skipping: ./.git/objects/82/2bb69f6e13207ec2f8f783ffc5aa3c5eabbcb3
 INFO:   -skipping: ./.git/objects/49/aff64f1367e2c0de5751c007e84d47c7f2b430
 INFO:   -skipping: ./.git/objects/47/e8df15d2f1c5c246a542d52075082a19018df7
-INFO:   -skipping: ./.git/objects/78/1201a2da583821deeb137a88745d740df20dc5
 INFO:   -skipping: ./.git/objects/78/9e58b1cd79b850b4ff85ac782e82b4253dc0f7
-INFO:   -skipping: ./.git/objects/78/8452f39d15d1ab89c0925756d89f96e5495128
 INFO:   -skipping: ./.git/objects/8b/5e0b555ff080a4b8a052b671e0204c9b8fb9b6
 INFO:   -skipping: ./.git/objects/8b/82ccc172b4c4c08254e190d1ef9ec97df8fbde
 INFO:   -skipping: ./.git/objects/13/2c0d4dfc1570c9c8dc5e54f68c73cda7b76e74
@@ -27822,15 +27750,15 @@ INFO:   +adding: ./.platform/hooks/postdeploy/99_restore_packagejson.sh
 INFO:  +adding: ./.platform/hooks/prebuild/
 INFO:   +adding: ./.platform/hooks/prebuild/01_npm_ci_and_build.sh
 INFO:   +adding: ./.platform/hooks/prebuild/enable-swap.sh
-INFO: Uploading archive to s3 location: tattoo-app/app-6ff1-260202_231500195213-stage-260202_231500195348.zip
+INFO: Uploading archive to s3 location: tattoo-app/app-07ab-260202_193841058236-stage-260202_193841058369.zip
 Alert: The platform version that your environment is using isn't recommended. There's a recommended version in the same platform branch.
 
-Creating application version archive "app-6ff1-260202_231500195213-stage-260202_231500195348".
+Creating application version archive "app-07ab-260202_193841058236-stage-260202_193841058369".
 Uploading: [--------------------------------------------------] 0% Uploading: [#########################-------------------------] 50% Uploading: [##################################################] 100% Done...
-INFO: Creating AppVersion app-6ff1-260202_231500195213-stage-260202_231500195348
-2026-02-03 05:15:12    INFO    Environment update is starting.
-2026-02-03 05:15:17    INFO    Deploying new version to instance(s).
-2026-02-03 05:15:22    WARN    Instance deployment: The deployment used the default Node.js version for your platform version instead of the Node.js version included in your 'package.json'.
-2026-02-03 05:16:46    INFO    Instance deployment completed successfully.
-2026-02-03 05:16:51    INFO    New application version was deployed to running EC2 instances.
-2026-02-03 05:16:51    INFO    Environment update completed successfully.
+INFO: Creating AppVersion app-07ab-260202_193841058236-stage-260202_193841058369
+2026-02-03 01:38:52    INFO    Environment update is starting.
+2026-02-03 01:38:57    INFO    Deploying new version to instance(s).
+2026-02-03 01:39:01    WARN    Instance deployment: The deployment used the default Node.js version for your platform version instead of the Node.js version included in your 'package.json'.
+2026-02-03 01:40:21    INFO    Instance deployment completed successfully.
+2026-02-03 01:40:27    INFO    New application version was deployed to running EC2 instances.
+2026-02-03 01:40:27    INFO    Environment update completed successfully.

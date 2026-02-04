@@ -13,8 +13,6 @@ INFO:   +adding: ./api_workflows.json
 INFO:   +adding: ./gh_run_dispatch.out
 INFO:   +adding: ./main_page.html
 INFO:   +adding: ./admin.html
-INFO:   +adding: ./eb-upload-response.json
-INFO:   -skipping: ./eb-deploy-patch.log
 INFO:   +adding: ./about.html
 INFO:   +adding: ./eb-remote-logs.txt
 INFO:   +adding: ./postcss.config.mjs
@@ -32,12 +30,10 @@ INFO:   +adding: ./api_workflows.err
 INFO:   +adding: ./next-env.d.ts
 INFO:   +adding: ./README.md
 INFO:   +adding: ./gallery.html
-INFO:   +adding: ./eb-logs-all.txt
 INFO:   +adding: ./eb-logs.txt
 INFO:   -skipping: ./.gitignore
 INFO:   +adding: ./package-lock.json
 INFO:   +adding: ./package.json
-INFO:   +adding: ./eb-upload2.json
 INFO:   +adding: ./.env
 INFO:   +adding: ./book.html
 INFO:   +adding: ./eb-logs-after-policy.txt
@@ -48,17 +44,14 @@ INFO:   +adding: ./tsconfig.json
 INFO:   +adding: ./adminmain.html
 INFO:   +adding: ./docker-compose.yml
 INFO:   +adding: ./run.out
-INFO:   -skipping: ./local-server.log
 INFO:   +adding: ./Procfile
 INFO:   +adding: ./.eslintignore
 INFO:   +adding: ./.env.example
-INFO:   -skipping: ./curl-proxy-output.log
 INFO:   -skipping: ./eb-deploy.log
 INFO:   -skipping: ./server.log
 INFO:   +adding: ./eslint.config.mjs
 INFO:   +adding: ./eslint.config.mjs.bak
 INFO:   +adding: ./thank-you.html
-INFO:   -skipping: ./eb-logs-after-redeploy.log
 INFO:   +adding: ./next.config.ts
 INFO:  +adding: ./app/
 INFO:   +adding: ./app/favicon.ico
@@ -27266,12 +27259,6 @@ INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203733/i-043264f4a2ab71be8/va
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203733/i-043264f4a2ab71be8/var/log/healthd
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203733/i-043264f4a2ab71be8/var/log/nginx
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203733/i-043264f4a2ab71be8/tmp
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_212204
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_212204/i-03ed6aaea614b22bd
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_212204/i-03ed6aaea614b22bd/var
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_212204/i-03ed6aaea614b22bd/var/log
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_212204/i-03ed6aaea614b22bd/var/log/healthd
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_212204/i-03ed6aaea614b22bd/var/log/nginx
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_185932
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_185932/i-043264f4a2ab71be8
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_185932/i-043264f4a2ab71be8/var
@@ -27300,20 +27287,6 @@ INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203234/i-043264f4a2ab71be8/va
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203234/i-043264f4a2ab71be8/var/log/healthd
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203234/i-043264f4a2ab71be8/var/log/nginx
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203234/i-043264f4a2ab71be8/tmp
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_204450
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_204450/i-043264f4a2ab71be8
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_204450/i-043264f4a2ab71be8/var
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_204450/i-043264f4a2ab71be8/var/log
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_204450/i-043264f4a2ab71be8/var/log/healthd
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_204450/i-043264f4a2ab71be8/var/log/nginx
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_204450/i-043264f4a2ab71be8/tmp
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_205839
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_205839/i-043264f4a2ab71be8
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_205839/i-043264f4a2ab71be8/var
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_205839/i-043264f4a2ab71be8/var/log
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_205839/i-043264f4a2ab71be8/var/log/healthd
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_205839/i-043264f4a2ab71be8/var/log/nginx
-INFO:   -skipping: ./.elasticbeanstalk/logs/260202_205839/i-043264f4a2ab71be8/tmp
 INFO:  +adding: ./.next/
 INFO:   +adding: ./.next/fallback-build-manifest.json
 INFO:   +adding: ./.next/trace
@@ -27595,10 +27568,7 @@ INFO:   +adding: ./public/ecosystem.config.js
 INFO:   +adding: ./public/thank-you.html
 INFO:   +adding: ./public/instagramwhite.jpeg
 INFO:  +adding: ./public/uploads/
-INFO:   +adding: ./public/uploads/1770088159203-1768837795968-copy-thumb.jpg
-INFO:   +adding: ./public/uploads/1770088159203-1768837795968-copy-med.jpg
 INFO:   +adding: ./public/uploads/1768948241602-yingyanglkoi.jpeg
-INFO:   +adding: ./public/uploads/1770088159203-1768837795968-copy.jpg
 INFO:  +adding: ./public/uploads/flash/
 INFO:   +adding: ./public/uploads/flash/1768663746746-cherryblossom_copy.png
 INFO:  +adding: ./public/.github/workflows/
@@ -27822,15 +27792,15 @@ INFO:   +adding: ./.platform/hooks/postdeploy/99_restore_packagejson.sh
 INFO:  +adding: ./.platform/hooks/prebuild/
 INFO:   +adding: ./.platform/hooks/prebuild/01_npm_ci_and_build.sh
 INFO:   +adding: ./.platform/hooks/prebuild/enable-swap.sh
-INFO: Uploading archive to s3 location: tattoo-app/app-6ff1-260202_231500195213-stage-260202_231500195348.zip
+INFO: Uploading archive to s3 location: tattoo-app/app-6ff1-260202_204112813768-stage-260202_204112813923.zip
 Alert: The platform version that your environment is using isn't recommended. There's a recommended version in the same platform branch.
 
-Creating application version archive "app-6ff1-260202_231500195213-stage-260202_231500195348".
+Creating application version archive "app-6ff1-260202_204112813768-stage-260202_204112813923".
 Uploading: [--------------------------------------------------] 0% Uploading: [#########################-------------------------] 50% Uploading: [##################################################] 100% Done...
-INFO: Creating AppVersion app-6ff1-260202_231500195213-stage-260202_231500195348
-2026-02-03 05:15:12    INFO    Environment update is starting.
-2026-02-03 05:15:17    INFO    Deploying new version to instance(s).
-2026-02-03 05:15:22    WARN    Instance deployment: The deployment used the default Node.js version for your platform version instead of the Node.js version included in your 'package.json'.
-2026-02-03 05:16:46    INFO    Instance deployment completed successfully.
-2026-02-03 05:16:51    INFO    New application version was deployed to running EC2 instances.
-2026-02-03 05:16:51    INFO    Environment update completed successfully.
+INFO: Creating AppVersion app-6ff1-260202_204112813768-stage-260202_204112813923
+2026-02-03 02:41:22    INFO    Environment update is starting.
+2026-02-03 02:41:28    INFO    Deploying new version to instance(s).
+2026-02-03 02:41:31    WARN    Instance deployment: The deployment used the default Node.js version for your platform version instead of the Node.js version included in your 'package.json'.
+2026-02-03 02:42:50    INFO    Instance deployment completed successfully.
+2026-02-03 02:42:57    INFO    New application version was deployed to running EC2 instances.
+2026-02-03 02:42:57    INFO    Environment update completed successfully.

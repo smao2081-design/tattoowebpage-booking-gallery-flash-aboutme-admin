@@ -1,0 +1,313 @@
+Retrieving logs...
+============= i-03ed6aaea614b22bd ==============
+----------------------------------------
+/var/log/eb-hooks.log
+----------------------------------------
+2026/02/03 03:16:01.958169 [INFO] Running command: .platform/hooks/prebuild/01_npm_ci_and_build.sh
+2026/02/03 03:16:01.965010 [INFO] Running command: .platform/hooks/prebuild/enable-swap.sh
+2026/02/03 03:16:02.018169 [INFO] Setting up swapspace version 1, size = 1024 MiB (1073737728 bytes)
+no label, UUID=d63f6228-e68b-4d7c-a5e8-003d4cc91d48
+Swap enabled: /var/swapfile 1024M
+
+2026/02/03 03:17:09.798807 [INFO] Running command: .platform/hooks/postdeploy/99_restore_packagejson.sh
+2026/02/03 03:17:09.807356 [INFO] package.json.ebskip not found — nothing to restore
+
+2026/02/03 05:03:59.852763 [INFO] Running command: .platform/hooks/prebuild/01_npm_ci_and_build.sh
+2026/02/03 05:03:59.860694 [INFO] Running command: .platform/hooks/prebuild/enable-swap.sh
+2026/02/03 05:03:59.872934 [INFO] Swap enabled: /var/swapfile 1024M
+
+2026/02/03 05:03:59.872953 [INFO] swapon: /var/swapfile: swapon failed: Device or resource busy
+
+2026/02/03 05:05:24.048024 [INFO] Running command: .platform/hooks/postdeploy/99_restore_packagejson.sh
+2026/02/03 05:05:24.050854 [INFO] package.json.ebskip not found — nothing to restore
+
+2026/02/03 05:15:22.058544 [INFO] Running command: .platform/hooks/prebuild/01_npm_ci_and_build.sh
+2026/02/03 05:15:22.063167 [INFO] Running command: .platform/hooks/prebuild/enable-swap.sh
+2026/02/03 05:15:22.076084 [INFO] Swap enabled: /var/swapfile 1024M
+
+2026/02/03 05:15:22.076102 [INFO] swapon: /var/swapfile: swapon failed: Device or resource busy
+
+2026/02/03 05:16:46.869518 [INFO] Running command: .platform/hooks/postdeploy/99_restore_packagejson.sh
+2026/02/03 05:16:46.871982 [INFO] package.json.ebskip not found — nothing to restore
+
+2026/02/03 05:26:36.369105 [INFO] Running command: .platform/hooks/prebuild/01_npm_ci_and_build.sh
+2026/02/03 05:26:36.373743 [INFO] Running command: .platform/hooks/prebuild/enable-swap.sh
+2026/02/03 05:26:36.386455 [INFO] Swap enabled: /var/swapfile 1024M
+
+2026/02/03 05:26:36.386474 [INFO] swapon: /var/swapfile: swapon failed: Device or resource busy
+
+2026/02/03 05:28:02.864802 [INFO] Running command: .platform/hooks/postdeploy/99_restore_packagejson.sh
+2026/02/03 05:28:02.869758 [INFO] package.json.ebskip not found — nothing to restore
+
+2026/02/03 05:32:36.608231 [INFO] Running command: .platform/hooks/prebuild/01_npm_ci_and_build.sh
+2026/02/03 05:32:36.613242 [INFO] Running command: .platform/hooks/prebuild/enable-swap.sh
+2026/02/03 05:32:36.625093 [INFO] Swap enabled: /var/swapfile 1024M
+
+2026/02/03 05:32:36.625110 [INFO] swapon: /var/swapfile: swapon failed: Device or resource busy
+
+2026/02/03 05:34:01.598947 [INFO] Running command: .platform/hooks/postdeploy/99_restore_packagejson.sh
+2026/02/03 05:34:01.602691 [INFO] package.json.ebskip not found — nothing to restore
+
+
+
+----------------------------------------
+/var/log/nginx/access.log
+----------------------------------------
+24.170.121.237 - - [03/Feb/2026:03:20:21 +0000] "HEAD /api/image?key=1770082570445-back_2.jpeg HTTP/1.1" 404 0 "-" "curl/8.4.0" "-"
+156.146.39.54 - - [03/Feb/2026:03:20:49 +0000] "GET /.env HTTP/1.1" 404 143 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36" "-"
+156.146.39.54 - - [03/Feb/2026:03:20:49 +0000] "POST / HTTP/1.1" 404 140 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36" "-"
+24.170.121.237 - admin [03/Feb/2026:03:22:57 +0000] "POST /api/upload HTTP/1.1" 401 23 "-" "curl/8.4.0" "-"
+24.170.121.237 - meao_ink [03/Feb/2026:03:23:30 +0000] "POST /api/upload HTTP/1.1" 200 196 "-" "curl/8.4.0" "-"
+24.170.121.237 - - [03/Feb/2026:03:23:39 +0000] "HEAD /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 0 "-" "curl/8.4.0" "-"
+24.170.121.237 - - [03/Feb/2026:03:30:19 +0000] "HEAD /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 0 "-" "curl/8.4.0" "-"
+24.170.121.237 - - [03/Feb/2026:03:31:00 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0" "-"
+108.165.218.25 - - [03/Feb/2026:03:33:06 +0000] "GET /.env HTTP/1.1" 404 143 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.140 Safari/537.36" "-"
+108.165.218.25 - - [03/Feb/2026:03:33:06 +0000] "POST / HTTP/1.1" 404 140 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.140 Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:35:43 +0000] "GET /api/images HTTP/1.1" 200 5388 "-" "curl/8.4.0" "-"
+24.170.121.237 - - [03/Feb/2026:03:35:52 +0000] "GET /api/images HTTP/1.1" 200 5388 "-" "curl/8.4.0" "-"
+24.170.121.237 - - [03/Feb/2026:03:37:04 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0" "-"
+24.170.121.237 - - [03/Feb/2026:03:38:26 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0" "-"
+24.170.121.237 - - [03/Feb/2026:03:38:31 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "-" "Dalvik/2.1.0 (Linux; U; Android 16; SM-S928U Build/BP2A.250605.031.A3)" "-"
+24.170.121.237 - - [03/Feb/2026:03:38:34 +0000] "GET /main_page.html HTTP/1.1" 304 0 "-" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:38:34 +0000] "GET /styles.css HTTP/1.1" 200 553 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:38:34 +0000] "GET /instagramwhite.jpeg HTTP/1.1" 304 0 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:38:34 +0000] "GET /tiktokwhite.jpeg HTTP/1.1" 304 0 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:38:34 +0000] "GET /1768837795968-copy.jpg HTTP/1.1" 304 0 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:38:34 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:39:43 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0" "-"
+204.76.203.219 - - [03/Feb/2026:03:40:07 +0000] "GET / HTTP/1.1" 200 496 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46" "-"
+24.170.121.237 - - [03/Feb/2026:03:55:58 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0" "-"
+24.170.121.237 - - [03/Feb/2026:03:56:16 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0" "-"
+24.170.121.237 - - [03/Feb/2026:03:56:56 +0000] "GET /main_page.html HTTP/1.1" 304 0 "-" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:56:57 +0000] "GET /styles.css HTTP/1.1" 304 0 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:56:57 +0000] "GET /instagramwhite.jpeg HTTP/1.1" 304 0 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:56:57 +0000] "GET /tiktokwhite.jpeg HTTP/1.1" 304 0 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:56:57 +0000] "GET /1768837795968-copy.jpg HTTP/1.1" 304 0 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:56:59 +0000] "GET /gallery.html HTTP/1.1" 200 7101 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:56:59 +0000] "GET /api/images HTTP/1.1" 200 5388 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/gallery.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:56:59 +0000] "GET /api/images HTTP/1.1" 304 0 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/gallery.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:57:05 +0000] "GET /flash.html HTTP/1.1" 304 0 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:57:05 +0000] "GET /api/images?target=flash HTTP/1.1" 304 0 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/flash.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:57:05 +0000] "GET /api/images?target=flash HTTP/1.1" 304 0 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/flash.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:57:09 +0000] "GET /about.html HTTP/1.1" 304 0 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:57:09 +0000] "GET /styles.css HTTP/1.1" 304 0 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/about.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:57:09 +0000] "GET /babyfull-copy.jpeg HTTP/1.1" 304 0 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/about.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:57:13 +0000] "GET /book.html HTTP/1.1" 304 0 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:57:13 +0000] "GET /api/booked-dates HTTP/1.1" 304 0 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/book.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:57:29 +0000] "GET /book.html HTTP/1.1" 304 0 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+24.170.121.237 - - [03/Feb/2026:03:57:29 +0000] "GET /api/booked-dates HTTP/1.1" 304 0 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/book.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36" "-"
+43.155.178.212 - - [03/Feb/2026:04:15:25 +0000] "GET / HTTP/1.1" 200 496 "-" "Go-http-client/1.1" "-"
+204.76.203.219 - - [03/Feb/2026:04:31:48 +0000] "GET / HTTP/1.1" 200 496 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46" "-"
+24.170.121.237 - - [03/Feb/2026:04:48:29 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0" "-"
+198.235.24.115 - - [03/Feb/2026:04:56:12 +0000] "GET / HTTP/1.0" 400 0 "-" "Hello from Palo Alto Networks, find out more about our scans in https://docs-cortex.paloaltonetworks.com/r/1/Cortex-Xpanse/Scanning-activity" "-"
+24.170.121.237 - - [03/Feb/2026:05:06:06 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0" "-"
+24.170.121.237 - - [03/Feb/2026:05:06:53 +0000] "GET /api/images HTTP/1.1" 200 5388 "-" "curl/8.4.0" "-"
+24.170.121.237 - - [03/Feb/2026:05:06:53 +0000] "GET /api/images?target=flash HTTP/1.1" 200 2 "-" "curl/8.4.0" "-"
+24.170.121.237 - - [03/Feb/2026:05:07:49 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0" "-"
+24.170.121.237 - - [03/Feb/2026:05:08:52 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0" "-"
+24.170.121.237 - - [03/Feb/2026:05:11:28 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0" "-"
+24.170.121.237 - - [03/Feb/2026:05:17:02 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0" "-"
+24.170.121.237 - - [03/Feb/2026:05:18:23 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0" "-"
+24.170.121.237 - - [03/Feb/2026:05:20:38 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0" "-"
+204.76.203.219 - - [03/Feb/2026:05:21:53 +0000] "GET / HTTP/1.1" 200 496 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46" "-"
+124.220.174.186 - - [03/Feb/2026:05:23:08 +0000] "GET / HTTP/1.1" 200 496 "-" "Go-http-client/1.1" "-"
+24.170.121.237 - - [03/Feb/2026:05:30:03 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0" "-"
+24.170.121.237 - - [03/Feb/2026:05:34:23 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0" "-"
+
+
+----------------------------------------
+/var/log/nginx/error.log
+----------------------------------------
+2026/02/03 03:17:09 [warn] 2321#2321: could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size
+2026/02/03 03:17:09 [warn] 2356#2356: could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size
+2026/02/03 03:17:09 [warn] 2357#2357: could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size
+2026/02/03 03:22:57 [warn] 2359#2359: *7 a client request body is buffered to a temporary file /var/lib/nginx/tmp/client_body/0000000001, client: 24.170.121.237, server: , request: "POST /api/upload HTTP/1.1", host: "Tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com"
+2026/02/03 03:23:29 [warn] 2359#2359: *9 a client request body is buffered to a temporary file /var/lib/nginx/tmp/client_body/0000000002, client: 24.170.121.237, server: , request: "POST /api/upload HTTP/1.1", host: "Tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com"
+2026/02/03 05:05:23 [warn] 6738#6738: could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size
+2026/02/03 05:05:23 [warn] 6777#6777: could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size
+2026/02/03 05:05:23 [warn] 6778#6778: could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size
+2026/02/03 05:16:46 [warn] 7852#7852: could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size
+2026/02/03 05:16:46 [warn] 7891#7891: could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size
+2026/02/03 05:16:46 [warn] 7892#7892: could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size
+2026/02/03 05:28:01 [warn] 9061#9061: could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size
+2026/02/03 05:28:02 [warn] 9100#9100: could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size
+2026/02/03 05:28:02 [warn] 9101#9101: could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size
+2026/02/03 05:34:00 [warn] 10023#10023: could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size
+2026/02/03 05:34:01 [warn] 10062#10062: could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size
+2026/02/03 05:34:01 [warn] 10063#10063: could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size
+
+
+----------------------------------------
+/var/log/web.stdout.log
+----------------------------------------
+Feb  3 03:17:10 ip-172-31-7-93 web[2312]: Upload server running on http://localhost:8080
+Feb  3 03:20:21 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:20:21 +0000] "HEAD /api/image?key=1770082570445-back_2.jpeg HTTP/1.1" 404 149 "-" "curl/8.4.0"
+Feb  3 03:20:49 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:20:49 +0000] "GET /.env HTTP/1.1" 404 143 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36"
+Feb  3 03:20:49 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:20:49 +0000] "POST / HTTP/1.1" 404 140 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36"
+Feb  3 03:22:57 ip-172-31-7-93 web[2312]: 127.0.0.1 - admin [03/Feb/2026:03:22:57 +0000] "POST /api/upload HTTP/1.1" 401 23 "-" "curl/8.4.0"
+Feb  3 03:23:30 ip-172-31-7-93 web[2312]: 127.0.0.1 - meao_ink [03/Feb/2026:03:23:30 +0000] "POST /api/upload HTTP/1.1" 200 196 "-" "curl/8.4.0"
+Feb  3 03:23:39 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:23:39 +0000] "HEAD /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 149 "-" "curl/8.4.0"
+Feb  3 03:30:19 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:30:19 +0000] "HEAD /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 149 "-" "curl/8.4.0"
+Feb  3 03:31:00 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:31:00 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0"
+Feb  3 03:33:06 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:33:06 +0000] "GET /.env HTTP/1.1" 404 143 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.140 Safari/537.36"
+Feb  3 03:33:06 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:33:06 +0000] "POST / HTTP/1.1" 404 140 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.140 Safari/537.36"
+Feb  3 03:35:43 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:35:43 +0000] "GET /api/images HTTP/1.1" 200 5388 "-" "curl/8.4.0"
+Feb  3 03:35:52 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:35:52 +0000] "GET /api/images HTTP/1.1" 200 5388 "-" "curl/8.4.0"
+Feb  3 03:37:04 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:37:04 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0"
+Feb  3 03:38:26 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:38:26 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0"
+Feb  3 03:38:31 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:38:31 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "-" "Dalvik/2.1.0 (Linux; U; Android 16; SM-S928U Build/BP2A.250605.031.A3)"
+Feb  3 03:38:34 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:38:34 +0000] "GET /main_page.html HTTP/1.1" 304 - "-" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:38:34 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:38:34 +0000] "GET /styles.css HTTP/1.1" 200 553 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:38:34 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:38:34 +0000] "GET /instagramwhite.jpeg HTTP/1.1" 304 - "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:38:34 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:38:34 +0000] "GET /tiktokwhite.jpeg HTTP/1.1" 304 - "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:38:34 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:38:34 +0000] "GET /1768837795968-copy.jpg HTTP/1.1" 304 - "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:38:34 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:38:34 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:39:43 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:39:43 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0"
+Feb  3 03:40:07 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:40:07 +0000] "GET / HTTP/1.1" 200 496 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46"
+Feb  3 03:55:58 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:55:58 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0"
+Feb  3 03:56:16 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:56:16 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0"
+Feb  3 03:56:56 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:56:56 +0000] "GET /main_page.html HTTP/1.1" 304 - "-" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:56:57 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:56:57 +0000] "GET /styles.css HTTP/1.1" 304 - "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:56:57 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:56:57 +0000] "GET /instagramwhite.jpeg HTTP/1.1" 304 - "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:56:57 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:56:57 +0000] "GET /tiktokwhite.jpeg HTTP/1.1" 304 - "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:56:57 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:56:57 +0000] "GET /1768837795968-copy.jpg HTTP/1.1" 304 - "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:56:59 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:56:59 +0000] "GET /gallery.html HTTP/1.1" 200 7101 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:56:59 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:56:59 +0000] "GET /api/images HTTP/1.1" 200 5388 "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/gallery.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:56:59 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:56:59 +0000] "GET /api/images HTTP/1.1" 304 - "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/gallery.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:57:05 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:57:05 +0000] "GET /flash.html HTTP/1.1" 304 - "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:57:05 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:57:05 +0000] "GET /api/images?target=flash HTTP/1.1" 304 - "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/flash.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:57:05 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:57:05 +0000] "GET /api/images?target=flash HTTP/1.1" 304 - "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/flash.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:57:09 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:57:09 +0000] "GET /about.html HTTP/1.1" 304 - "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:57:09 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:57:09 +0000] "GET /styles.css HTTP/1.1" 304 - "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/about.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:57:09 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:57:09 +0000] "GET /babyfull-copy.jpeg HTTP/1.1" 304 - "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/about.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:57:13 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:57:13 +0000] "GET /book.html HTTP/1.1" 304 - "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:57:13 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:57:13 +0000] "GET /api/booked-dates HTTP/1.1" 304 - "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/book.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:57:29 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:57:29 +0000] "GET /book.html HTTP/1.1" 304 - "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/main_page.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 03:57:29 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:03:57:29 +0000] "GET /api/booked-dates HTTP/1.1" 304 - "http://tattoo-app-prod.eba-dem7b9wd.us-east-1.elasticbeanstalk.com/book.html" "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Mobile Safari/537.36"
+Feb  3 04:15:25 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:04:15:25 +0000] "GET / HTTP/1.1" 200 496 "-" "Go-http-client/1.1"
+Feb  3 04:31:48 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:04:31:48 +0000] "GET / HTTP/1.1" 200 496 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46"
+Feb  3 04:48:29 ip-172-31-7-93 web[2312]: 127.0.0.1 - - [03/Feb/2026:04:48:29 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0"
+Feb  3 05:05:24 ip-172-31-7-93 web[6734]: Upload server running on http://localhost:8080
+Feb  3 05:06:06 ip-172-31-7-93 web[6734]: 127.0.0.1 - - [03/Feb/2026:05:06:06 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0"
+Feb  3 05:06:53 ip-172-31-7-93 web[6734]: 127.0.0.1 - - [03/Feb/2026:05:06:53 +0000] "GET /api/images HTTP/1.1" 200 5388 "-" "curl/8.4.0"
+Feb  3 05:06:53 ip-172-31-7-93 web[6734]: 127.0.0.1 - - [03/Feb/2026:05:06:53 +0000] "GET /api/images?target=flash HTTP/1.1" 200 2 "-" "curl/8.4.0"
+Feb  3 05:07:49 ip-172-31-7-93 web[6734]: 127.0.0.1 - - [03/Feb/2026:05:07:49 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0"
+Feb  3 05:08:52 ip-172-31-7-93 web[6734]: 127.0.0.1 - - [03/Feb/2026:05:08:52 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0"
+Feb  3 05:11:28 ip-172-31-7-93 web[6734]: 127.0.0.1 - - [03/Feb/2026:05:11:28 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0"
+Feb  3 05:16:47 ip-172-31-7-93 web[7848]: Upload server running on http://localhost:8080
+Feb  3 05:17:02 ip-172-31-7-93 web[7848]: 127.0.0.1 - - [03/Feb/2026:05:17:02 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0"
+Feb  3 05:18:23 ip-172-31-7-93 web[7848]: 127.0.0.1 - - [03/Feb/2026:05:18:23 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0"
+Feb  3 05:20:38 ip-172-31-7-93 web[7848]: 127.0.0.1 - - [03/Feb/2026:05:20:38 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0"
+Feb  3 05:21:53 ip-172-31-7-93 web[7848]: 127.0.0.1 - - [03/Feb/2026:05:21:53 +0000] "GET / HTTP/1.1" 200 496 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46"
+Feb  3 05:23:08 ip-172-31-7-93 web[7848]: 127.0.0.1 - - [03/Feb/2026:05:23:08 +0000] "GET / HTTP/1.1" 200 496 "-" "Go-http-client/1.1"
+Feb  3 05:28:03 ip-172-31-7-93 web[9057]: Upload server running on http://localhost:8080
+Feb  3 05:30:03 ip-172-31-7-93 web[9057]: 127.0.0.1 - - [03/Feb/2026:05:30:03 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0"
+Feb  3 05:34:02 ip-172-31-7-93 web[10019]: Upload server running on http://localhost:8080
+Feb  3 05:34:23 ip-172-31-7-93 web[10019]: 127.0.0.1 - - [03/Feb/2026:05:34:23 +0000] "GET /api/image?key=1770089010717-1768837795968-copy.jpg HTTP/1.1" 404 148 "-" "curl/8.4.0"
+
+
+----------------------------------------
+/var/log/eb-engine.log
+----------------------------------------
+2026/02/03 05:33:57.100132 [INFO] Running command: systemctl daemon-reload
+2026/02/03 05:33:57.331612 [INFO] Running command: systemctl reset-failed
+2026/02/03 05:33:57.339329 [INFO] Running command: systemctl is-active web.service
+2026/02/03 05:33:57.347485 [INFO] Process web has been fully terminated
+2026/02/03 05:33:57.347506 [INFO] All processes have been fully terminated
+2026/02/03 05:33:57.347513 [INFO] Removing /var/app/current/ if it exists
+2026/02/03 05:33:59.604818 [INFO] Renaming /var/app/staging/ to /var/app/current/
+2026/02/03 05:33:59.604853 [INFO] Register application processes...
+2026/02/03 05:33:59.604861 [INFO] Registering the proc: web
+
+2026/02/03 05:33:59.604872 [INFO] Running command: systemctl show -p PartOf web.service
+2026/02/03 05:33:59.641034 [INFO] Running command: systemctl daemon-reload
+2026/02/03 05:33:59.834488 [INFO] Running command: systemctl reset-failed
+2026/02/03 05:33:59.842960 [INFO] Running command: systemctl is-enabled eb-app.target
+2026/02/03 05:33:59.852005 [INFO] Running command: systemctl enable eb-app.target
+2026/02/03 05:34:00.319662 [INFO] Running command: systemctl start eb-app.target
+2026/02/03 05:34:00.330183 [INFO] Running command: systemctl enable web.service
+2026/02/03 05:34:00.612736 [INFO] Created symlink /etc/systemd/system/multi-user.target.wants/web.service → /etc/systemd/system/web.service.
+
+2026/02/03 05:34:00.612772 [INFO] Running command: systemctl show -p PartOf web.service
+2026/02/03 05:34:00.624820 [INFO] Running command: systemctl is-active web.service
+2026/02/03 05:34:00.632713 [INFO] Running command: systemctl start web.service
+2026/02/03 05:34:00.708041 [INFO] Executing instruction: start X-Ray
+2026/02/03 05:34:00.708057 [INFO] X-Ray is not enabled.
+2026/02/03 05:34:00.708061 [INFO] Executing instruction: start proxy with new configuration
+2026/02/03 05:34:00.708124 [INFO] Running command: /usr/sbin/nginx -t -c /var/proxy/staging/nginx/nginx.conf
+2026/02/03 05:34:00.751226 [INFO] nginx: [warn] could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64; ignoring types_hash_bucket_size
+nginx: the configuration file /var/proxy/staging/nginx/nginx.conf syntax is ok
+nginx: configuration file /var/proxy/staging/nginx/nginx.conf test is successful
+
+2026/02/03 05:34:00.752453 [INFO] Running command: cp -rp /var/proxy/staging/nginx/* /etc/nginx
+2026/02/03 05:34:00.759219 [INFO] Running command: systemctl show -p PartOf nginx.service
+2026/02/03 05:34:00.777944 [INFO] Running command: systemctl daemon-reload
+2026/02/03 05:34:01.099486 [INFO] Running command: systemctl reset-failed
+2026/02/03 05:34:01.110803 [INFO] Running command: systemctl show -p PartOf nginx.service
+2026/02/03 05:34:01.125268 [INFO] Running command: systemctl is-active nginx.service
+2026/02/03 05:34:01.135672 [INFO] Running command: systemctl start nginx.service
+2026/02/03 05:34:01.521135 [INFO] Executing instruction: configureSqsd
+2026/02/03 05:34:01.521155 [INFO] This is a web server environment instance, skip configure sqsd daemon ...
+2026/02/03 05:34:01.521159 [INFO] Executing instruction: startSqsd
+2026/02/03 05:34:01.521162 [INFO] This is a web server environment instance, skip start sqsd daemon ...
+2026/02/03 05:34:01.521165 [INFO] Executing instruction: Track pids in healthd
+2026/02/03 05:34:01.521169 [INFO] This is an enhanced health env...
+2026/02/03 05:34:01.521181 [INFO] Running command: systemctl show -p ConsistsOf aws-eb.target | cut -d= -f2
+2026/02/03 05:34:01.537515 [INFO] nginx.service cfn-hup.service healthd.service
+
+2026/02/03 05:34:01.537545 [INFO] Running command: systemctl show -p ConsistsOf eb-app.target | cut -d= -f2
+2026/02/03 05:34:01.558928 [INFO] web.service
+
+2026/02/03 05:34:01.560013 [INFO] Executing instruction: RunAppDeployPostDeployHooks
+2026/02/03 05:34:01.560078 [INFO] Executing platform hooks in .platform/hooks/postdeploy/
+2026/02/03 05:34:01.561570 [INFO] Following scripts will be executed in order: [99_restore_packagejson.sh]
+2026/02/03 05:34:01.561596 [INFO] Try add execution permission
+2026/02/03 05:34:01.561608 [INFO] Adding execute mode to file, original mode is 420
+2026/02/03 05:34:01.561645 [INFO] Running command: file -b /var/app/current/.platform/hooks/postdeploy/99_restore_packagejson.sh
+2026/02/03 05:34:01.598881 [INFO] Bourne-Again shell script, UTF-8 Unicode text executable
+
+2026/02/03 05:34:01.598932 [INFO] Running script: .platform/hooks/postdeploy/99_restore_packagejson.sh
+2026/02/03 05:34:01.602716 [INFO] Finished running scripts in /var/app/current/.platform/hooks/postdeploy
+2026/02/03 05:34:01.602728 [INFO] Executing cleanup logic
+2026/02/03 05:34:01.608833 [INFO] CommandService Response: {"status":"SUCCESS","api_version":"1.0","results":[{"status":"SUCCESS","msg":"Engine execution has succeeded.","returncode":0,"events":[{"msg":"Instance deployment: The deployment used the default Node.js version for your platform version instead of the Node.js version included in your 'package.json'.","timestamp":1770096756625,"severity":"WARN"},{"msg":"Instance deployment completed successfully.","timestamp":1770096841602,"severity":"INFO"}]}]}
+
+2026/02/03 05:34:01.609050 [INFO] Platform Engine finished execution on command: app-deploy
+
+2026/02/03 05:34:26.488439 [INFO] Starting...
+2026/02/03 05:34:26.488498 [INFO] Starting EBPlatform-PlatformEngine
+2026/02/03 05:34:26.488549 [INFO] reading event message file
+2026/02/03 05:34:26.499276 [INFO] Engine received EB command cfn-hup-exec
+
+2026/02/03 05:34:26.698220 [INFO] Running command: /opt/aws/bin/cfn-get-metadata -s arn:aws:cloudformation:us-east-1:012169729733:stack/awseb-e-2mahuhjfhp-stack/6c0a5080-fd7d-11f0-87c8-0e3dd0f0bb6b -r AWSEBAutoScalingGroup --region us-east-1
+2026/02/03 05:34:27.422372 [INFO] Running command: /opt/aws/bin/cfn-get-metadata -s arn:aws:cloudformation:us-east-1:012169729733:stack/awseb-e-2mahuhjfhp-stack/6c0a5080-fd7d-11f0-87c8-0e3dd0f0bb6b -r AWSEBBeanstalkMetadata --region us-east-1
+2026/02/03 05:34:27.726780 [INFO] checking whether command bundle-log is applicable to this instance...
+2026/02/03 05:34:27.726798 [INFO] this command is applicable to the instance, thus instance should execute command
+2026/02/03 05:34:27.726806 [INFO] Engine command: (bundle-log)
+
+2026/02/03 05:34:27.727895 [INFO] Executing instruction: GetBundleLogs
+2026/02/03 05:34:27.727899 [INFO] Bundle Logs...
+2026/02/03 05:34:27.851799 [INFO] Executing cleanup logic
+2026/02/03 05:34:27.851870 [INFO] CommandService Response: {"status":"SUCCESS","api_version":"1.0","results":[{"status":"SUCCESS","msg":"Engine execution has succeeded.","returncode":0,"events":[{"msg":"Instance deployment completed successfully.","timestamp":1770096867851,"severity":"INFO"}]}]}
+
+2026/02/03 05:34:27.851887 [INFO] Platform Engine finished execution on command: bundle-log
+
+2026/02/03 05:34:35.881213 [INFO] Starting...
+2026/02/03 05:34:35.881265 [INFO] Starting EBPlatform-PlatformEngine
+2026/02/03 05:34:35.881287 [INFO] reading event message file
+2026/02/03 05:34:35.881640 [INFO] Engine received EB command cfn-hup-exec
+
+2026/02/03 05:34:35.957505 [INFO] Running command: /opt/aws/bin/cfn-get-metadata -s arn:aws:cloudformation:us-east-1:012169729733:stack/awseb-e-2mahuhjfhp-stack/6c0a5080-fd7d-11f0-87c8-0e3dd0f0bb6b -r AWSEBAutoScalingGroup --region us-east-1
+2026/02/03 05:34:36.256579 [INFO] Running command: /opt/aws/bin/cfn-get-metadata -s arn:aws:cloudformation:us-east-1:012169729733:stack/awseb-e-2mahuhjfhp-stack/6c0a5080-fd7d-11f0-87c8-0e3dd0f0bb6b -r AWSEBBeanstalkMetadata --region us-east-1
+2026/02/03 05:34:36.562271 [INFO] checking whether command tail-log is applicable to this instance...
+2026/02/03 05:34:36.562288 [INFO] this command is applicable to the instance, thus instance should execute command
+2026/02/03 05:34:36.562291 [INFO] Engine command: (tail-log)
+
+2026/02/03 05:34:36.562343 [INFO] Executing instruction: GetTailLogs
+2026/02/03 05:34:36.562347 [INFO] Tail Logs...
+2026/02/03 05:34:36.564199 [INFO] Running command: tail -n 100 /var/log/eb-hooks.log
+2026/02/03 05:34:36.568848 [INFO] Running command: tail -n 100 /var/log/nginx/access.log
+2026/02/03 05:34:36.571027 [INFO] Running command: tail -n 100 /var/log/nginx/error.log
+2026/02/03 05:34:36.572845 [INFO] Running command: tail -n 100 /var/log/web.stdout.log
+2026/02/03 05:34:36.574668 [INFO] Running command: tail -n 100 /var/log/eb-engine.log
+
+

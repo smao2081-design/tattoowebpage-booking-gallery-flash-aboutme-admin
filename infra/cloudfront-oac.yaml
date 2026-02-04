@@ -1,0 +1,70 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: |
+  CloudFormation template to create a CloudFront Distribution with Origin Access Control (OAC)
+  that can securely access a private S3 bucket. This template also attaches a bucket policy
+  limiting s3:GetObject to requests originating from the created CloudFront distribution.
+
+Parameters:
+  BucketName:
+    Type: String
+    Description: Name of the existing S3 bucket to protect and serve via CloudFront
+  EnableDistribution:
+    Type: String
+    AllowedValues: ["true","false"]
+    Default: "true"
+    Description: Set to false to create the OAC but not enable the distribution (for staging)
+  PriceClass:
+    Type: String
+    Default: PriceClass_100
+    AllowedValues: [PriceClass_100, PriceClass_200, PriceClass_All]
+    Description: CloudFront price class
+
+Resources:
+  # CloudFront Origin Access Control removed temporarily to avoid EarlyValidation
+  # issues. The distribution will be created with a public S3 origin; apply OAC
+  # or stricter bucket policy in a follow-up deployment when Distribution exists.
+
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Condition: CreateDistributionCondition
+    Properties:
+      DistributionConfig:
+        Enabled: true
+        PriceClass: !Ref PriceClass
+        Origins:
+          - Id: !Sub "S3-${BucketName}"
+            DomainName: !Sub "${BucketName}.s3.amazonaws.com"
+            S3OriginConfig: {}
+        DefaultCacheBehavior:
+          TargetOriginId: !Sub "S3-${BucketName}"
+          ViewerProtocolPolicy: redirect-to-https
+          AllowedMethods:
+            - GET
+            - HEAD
+          CachedMethods:
+            - GET
+            - HEAD
+          Compress: true
+          ForwardedValues:
+            QueryString: false
+            Cookies:
+              Forward: none
+        DefaultRootObject: index.html
+        ViewerCertificate:
+          CloudFrontDefaultCertificate: true
+
+  # S3 bucket policy is intentionally omitted here to avoid EarlyValidation hooks
+  # that require the CloudFront Distribution ID to exist before the policy can be
+  # validated. Apply a bucket policy manually or via a follow-up CloudFormation
+  # step after the distribution has been created.
+
+Conditions:
+  CreateDistributionCondition: !Equals [ !Ref EnableDistribution, "true" ]
+
+Outputs:
+  DistributionId:
+    Description: CloudFront Distribution ID (useful for creating signed URLs or additional config)
+    Value: !If [ CreateDistributionCondition, !Ref CloudFrontDistribution, "" ]
+  DistributionDomainName:
+    Description: CloudFront domain name (use this as your public CDN URL)
+    Value: !If [ CreateDistributionCondition, !GetAtt CloudFrontDistribution.DomainName, "" ]

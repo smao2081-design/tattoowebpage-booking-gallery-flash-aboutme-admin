@@ -1,0 +1,74 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Effect": "Allow",
+			"Action": [
+				"cloudformation:CreateStack",
+				"cloudformation:CreateChangeSet",
+				"cloudformation:DescribeStacks",
+				"cloudformation:DescribeChangeSet",
+				"cloudformation:ExecuteChangeSet",
+				"cloudformation:DeleteStack",
+				"cloudformation:UpdateStack",
+				"cloudformation:ListStacks",
+				"cloudformation:ListChangeSets"
+			],
+			"Resource": "arn:aws:cloudformation:us-east-1:012169729733:stack/myapp-cloudfront-oac/*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": "iam:PassRole",
+			"Resource": "arn:aws:iam::012169729733:role/*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"s3:PutBucketPolicy",
+				"s3:GetBucketPolicy",
+				"s3:GetBucketLocation",
+				"s3:ListBucket"
+			],
+			"Resource": [
+				"arn:aws:s3:::tattoo-booking-uploads"
+			]
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"s3:PutObject",
+				"s3:GetObject",
+				"s3:DeleteObject"
+			],
+			"Resource": [
+				"arn:aws:s3:::tattoo-booking-uploads/*"
+			]
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"cloudfront:CreateDistribution",
+				"cloudfront:UpdateDistribution",
+				"cloudfront:GetDistribution",
+				"cloudfront:CreateInvalidation",
+				"cloudfront:CreateOriginAccessControl",
+				"cloudfront:GetOriginAccessControl",
+				"cloudfront:ListOriginAccessControls",
+				"cloudfront:TagResource"
+			],
+			"Resource": "*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"iam:CreateRole",
+				"iam:AttachRolePolicy",
+				"iam:CreatePolicy",
+				"iam:PutRolePolicy",
+				"iam:AttachUserPolicy",
+				"iam:CreateServiceLinkedRole"
+			],
+			"Resource": "arn:aws:iam::012169729733:role/*"
+		}
+	]
+}

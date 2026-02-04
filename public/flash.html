@@ -79,15 +79,24 @@
         if(serverImages && serverImages.length){
           galleryEl.innerHTML = '';
           serverImages.forEach(item => {
-            const div = document.createElement('div'); div.className='gallery-item';
-            const img = document.createElement('img');
-            let src = item.url || '';
-            if (!/^https?:\/\//i.test(src)) src = base + (src.startsWith('/') ? src : '/' + src);
-            img.src = src;
-            img.alt = item.name || 'Flash Upload';
-            div.appendChild(img);
-            galleryEl.appendChild(div);
-          });
+              const div = document.createElement('div'); div.className='gallery-item';
+              const img = document.createElement('img');
+              // Prefer derived thumbnail/medium when available. If S3 objects are private,
+              // request them via the server proxy `/api/image?key=` using the provided object keys.
+              let full = item.url || '';
+              if (!full && item.key) full = '/api/image?key=' + encodeURIComponent(item.key);
+              if (full && !/^https?:\/\//i.test(full) && !full.startsWith('/api/')) full = base + (full.startsWith('/') ? full : '/' + full);
+
+              let thumb = item.thumb || item.thumbnail || null;
+              if (!thumb && item.medKey) thumb = '/api/image?key=' + encodeURIComponent(item.medKey);
+              if (!thumb && item.thumbKey) thumb = '/api/image?key=' + encodeURIComponent(item.thumbKey);
+              if (thumb && !/^https?:\/\//i.test(thumb) && !thumb.startsWith('/api/')) thumb = base + (thumb.startsWith('/') ? thumb : '/' + thumb);
+
+              img.src = thumb || full;
+              img.alt = item.name || 'Flash Upload';
+              div.appendChild(img);
+              galleryEl.appendChild(div);
+            });
         }
       }catch(e){ /* ignore */ }
     })();

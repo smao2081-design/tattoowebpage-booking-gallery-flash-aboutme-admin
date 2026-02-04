@@ -18,7 +18,9 @@ INFO:   -skipping: ./eb-deploy-patch.log
 INFO:   +adding: ./about.html
 INFO:   +adding: ./eb-remote-logs.txt
 INFO:   +adding: ./postcss.config.mjs
+INFO:   -skipping: ./eb-deploy2.log
 INFO:   +adding: ./Dockerfile
+INFO:   -skipping: ./eb-deploy3.log
 INFO:   +adding: ./admin.jsx
 INFO:   -skipping: ./eb-deploy-listing-fix.log
 INFO:   -skipping: ./eb-redeploy.log
@@ -27266,6 +27268,12 @@ INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203733/i-043264f4a2ab71be8/va
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203733/i-043264f4a2ab71be8/var/log/healthd
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203733/i-043264f4a2ab71be8/var/log/nginx
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_203733/i-043264f4a2ab71be8/tmp
+INFO:   -skipping: ./.elasticbeanstalk/logs/260202_231832
+INFO:   -skipping: ./.elasticbeanstalk/logs/260202_231832/i-03ed6aaea614b22bd
+INFO:   -skipping: ./.elasticbeanstalk/logs/260202_231832/i-03ed6aaea614b22bd/var
+INFO:   -skipping: ./.elasticbeanstalk/logs/260202_231832/i-03ed6aaea614b22bd/var/log
+INFO:   -skipping: ./.elasticbeanstalk/logs/260202_231832/i-03ed6aaea614b22bd/var/log/healthd
+INFO:   -skipping: ./.elasticbeanstalk/logs/260202_231832/i-03ed6aaea614b22bd/var/log/nginx
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_212204
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_212204/i-03ed6aaea614b22bd
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_212204/i-03ed6aaea614b22bd/var
@@ -27314,6 +27322,12 @@ INFO:   -skipping: ./.elasticbeanstalk/logs/260202_205839/i-043264f4a2ab71be8/va
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_205839/i-043264f4a2ab71be8/var/log/healthd
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_205839/i-043264f4a2ab71be8/var/log/nginx
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_205839/i-043264f4a2ab71be8/tmp
+INFO:   -skipping: ./.elasticbeanstalk/logs/260202_232047
+INFO:   -skipping: ./.elasticbeanstalk/logs/260202_232047/i-03ed6aaea614b22bd
+INFO:   -skipping: ./.elasticbeanstalk/logs/260202_232047/i-03ed6aaea614b22bd/var
+INFO:   -skipping: ./.elasticbeanstalk/logs/260202_232047/i-03ed6aaea614b22bd/var/log
+INFO:   -skipping: ./.elasticbeanstalk/logs/260202_232047/i-03ed6aaea614b22bd/var/log/healthd
+INFO:   -skipping: ./.elasticbeanstalk/logs/260202_232047/i-03ed6aaea614b22bd/var/log/nginx
 INFO:  +adding: ./.next/
 INFO:   +adding: ./.next/fallback-build-manifest.json
 INFO:   +adding: ./.next/trace
@@ -27822,15 +27836,15 @@ INFO:   +adding: ./.platform/hooks/postdeploy/99_restore_packagejson.sh
 INFO:  +adding: ./.platform/hooks/prebuild/
 INFO:   +adding: ./.platform/hooks/prebuild/01_npm_ci_and_build.sh
 INFO:   +adding: ./.platform/hooks/prebuild/enable-swap.sh
-INFO: Uploading archive to s3 location: tattoo-app/app-6ff1-260202_231500195213-stage-260202_231500195348.zip
+INFO: Uploading archive to s3 location: tattoo-app/app-6ff1-260202_233214633343-stage-260202_233214633527.zip
 Alert: The platform version that your environment is using isn't recommended. There's a recommended version in the same platform branch.
 
-Creating application version archive "app-6ff1-260202_231500195213-stage-260202_231500195348".
+Creating application version archive "app-6ff1-260202_233214633343-stage-260202_233214633527".
 Uploading: [--------------------------------------------------] 0% Uploading: [#########################-------------------------] 50% Uploading: [##################################################] 100% Done...
-INFO: Creating AppVersion app-6ff1-260202_231500195213-stage-260202_231500195348
-2026-02-03 05:15:12    INFO    Environment update is starting.
-2026-02-03 05:15:17    INFO    Deploying new version to instance(s).
-2026-02-03 05:15:22    WARN    Instance deployment: The deployment used the default Node.js version for your platform version instead of the Node.js version included in your 'package.json'.
-2026-02-03 05:16:46    INFO    Instance deployment completed successfully.
-2026-02-03 05:16:51    INFO    New application version was deployed to running EC2 instances.
-2026-02-03 05:16:51    INFO    Environment update completed successfully.
+INFO: Creating AppVersion app-6ff1-260202_233214633343-stage-260202_233214633527
+2026-02-03 05:32:26    INFO    Environment update is starting.
+2026-02-03 05:32:32    INFO    Deploying new version to instance(s).
+2026-02-03 05:32:36    WARN    Instance deployment: The deployment used the default Node.js version for your platform version instead of the Node.js version included in your 'package.json'.
+2026-02-03 05:34:01    INFO    Instance deployment completed successfully.
+2026-02-03 05:34:06    INFO    New application version was deployed to running EC2 instances.
+2026-02-03 05:34:06    INFO    Environment update completed successfully.
