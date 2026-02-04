@@ -27732,6 +27732,7 @@ INFO:   -skipping: ./.git/objects/0b/76afca97ad88415e4ee1bf8ec20fd1e88018cb
 INFO:   -skipping: ./.git/objects/0b/264e37dc7785f3058bd23ea6245f52dad2cb3c
 INFO:   -skipping: ./.git/objects/0b/3d96acb0c3481cc4290edf58fed8c1786ac39e
 INFO:   -skipping: ./.git/objects/0b/a83b2c3e9b6cb016d5fefba50e12d9205c0926
+INFO:   -skipping: ./.git/objects/93/ca1f33fbd8f359eb3c06ec0860ab79a65c9699
 INFO:   -skipping: ./.git/objects/94/7d600040a3ec40ff6a4ed4e1399432ea4d39c3
 INFO:   -skipping: ./.git/objects/0e/728fe6991dc23c95f0e7fcea5cb3d5ac599259
 INFO:   -skipping: ./.git/objects/60/5be67b703be5fa4c9aa27dba0aa6689e40d5f8
@@ -27785,6 +27786,7 @@ INFO:   -skipping: ./.git/objects/20/bf78f24c44a5e964e6862bafe644ea68c85999
 INFO:   -skipping: ./.git/objects/18/62e288376b2dc499e8df0019fc024bd158be3e
 INFO:   -skipping: ./.git/objects/pack/pack-1d723b12f508addbda37c638b51dfe0f3bad54eb.idx
 INFO:   -skipping: ./.git/objects/pack/pack-1d723b12f508addbda37c638b51dfe0f3bad54eb.pack
+INFO:   -skipping: ./.git/objects/7d/acb74d09875320f7b2a1a07af06f6fb392aaa4
 INFO:   -skipping: ./.git/objects/29/b9499fe1a2c0e5848081f6489244fc9703ebd1
 INFO:   -skipping: ./.git/objects/7c/cfa54825d22efd79da6f6dd8ee15d8ea334a10
 INFO:   -skipping: ./.git/objects/16/2a17c990bb873a618576ee80fdc646b70be3e0
@@ -27855,6 +27857,7 @@ INFO:   -skipping: ./.git/objects/cb/28c70734df8f1c7e294f6b5d4645531d015e03
 INFO:   -skipping: ./.git/objects/f8/bdcdf08508f6c8838059065751daf1a25eaef5
 INFO:   -skipping: ./.git/objects/83/782e00eab7290fbcd8710af0493d9042aae45a
 INFO:   -skipping: ./.git/objects/48/e745650227c2149fc8e1c350af8a9e65c93b46
+INFO:   -skipping: ./.git/objects/1e/c09b2bb53fa4feec7b5fbf650351ae895fd59e
 INFO:   -skipping: ./.git/objects/84/1c57534d892414003e9f042450dabaf124a1d8
 INFO:   -skipping: ./.git/objects/84/93e2fd87239c22a555eb31bdad0db22f4699c6
 INFO:   -skipping: ./.git/objects/4a/e5c6037b6518a679c528a19e74291552d0644b
@@ -27950,15 +27953,15 @@ INFO:   +adding: ./.platform/hooks/postdeploy/99_restore_packagejson.sh
 INFO:  +adding: ./.platform/hooks/prebuild/
 INFO:   +adding: ./.platform/hooks/prebuild/01_npm_ci_and_build.sh
 INFO:   +adding: ./.platform/hooks/prebuild/enable-swap.sh
-INFO: Uploading archive to s3 location: tattoo-app/app-0b26-260204_165905651987-stage-260204_165905652269.zip
+INFO: Uploading archive to s3 location: tattoo-app/app-7dacb-260204_170235878465-stage-260204_170235878659.zip
 Alert: The platform version that your environment is using isn't recommended. There's a recommended version in the same platform branch.
 
-Creating application version archive "app-0b26-260204_165905651987-stage-260204_165905652269".
+Creating application version archive "app-7dacb-260204_170235878465-stage-260204_170235878659".
 Uploading: [--------------------------------------------------] 0% Uploading: [#########################-------------------------] 50% Uploading: [##################################################] 100% Done...
-INFO: Creating AppVersion app-0b26-260204_165905651987-stage-260204_165905652269
-2026-02-04 22:59:17    INFO    Environment update is starting.
-2026-02-04 22:59:23    INFO    Deploying new version to instance(s).
-2026-02-04 22:59:26    WARN    Instance deployment: The deployment used the default Node.js version for your platform version instead of the Node.js version included in your 'package.json'.
-2026-02-04 23:00:52    INFO    Instance deployment completed successfully.
-2026-02-04 23:00:56    INFO    New application version was deployed to running EC2 instances.
-2026-02-04 23:00:56    INFO    Environment update completed successfully.
+INFO: Creating AppVersion app-7dacb-260204_170235878465-stage-260204_170235878659
+2026-02-04 23:02:46    INFO    Environment update is starting.
+2026-02-04 23:02:52    INFO    Deploying new version to instance(s).
+2026-02-04 23:02:57    WARN    Instance deployment: The deployment used the default Node.js version for your platform version instead of the Node.js version included in your 'package.json'.
+2026-02-04 23:04:21    INFO    Instance deployment completed successfully.
+2026-02-04 23:04:27    INFO    New application version was deployed to running EC2 instances.
+2026-02-04 23:04:28    INFO    Environment update completed successfully.
