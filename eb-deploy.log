@@ -27326,6 +27326,12 @@ INFO:   -skipping: ./.elasticbeanstalk/logs/260204_061338/i-03ed6aaea614b22bd/va
 INFO:   -skipping: ./.elasticbeanstalk/logs/260204_061338/i-03ed6aaea614b22bd/var/log
 INFO:   -skipping: ./.elasticbeanstalk/logs/260204_061338/i-03ed6aaea614b22bd/var/log/healthd
 INFO:   -skipping: ./.elasticbeanstalk/logs/260204_061338/i-03ed6aaea614b22bd/var/log/nginx
+INFO:   -skipping: ./.elasticbeanstalk/logs/260204_170931
+INFO:   -skipping: ./.elasticbeanstalk/logs/260204_170931/i-05fe85a59676697f0
+INFO:   -skipping: ./.elasticbeanstalk/logs/260204_170931/i-05fe85a59676697f0/var
+INFO:   -skipping: ./.elasticbeanstalk/logs/260204_170931/i-05fe85a59676697f0/var/log
+INFO:   -skipping: ./.elasticbeanstalk/logs/260204_170931/i-05fe85a59676697f0/var/log/healthd
+INFO:   -skipping: ./.elasticbeanstalk/logs/260204_170931/i-05fe85a59676697f0/var/log/nginx
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_194351
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_194351/i-043264f4a2ab71be8
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_194351/i-043264f4a2ab71be8/var
@@ -27803,6 +27809,7 @@ INFO:   -skipping: ./.git/objects/1a/54325c9be8d3483af7ceb7bee610a9e70739c1
 INFO:   -skipping: ./.git/objects/4c/tmp_obj_ADMVuI
 INFO:   -skipping: ./.git/objects/4d/02311d94c3f5a7de3f609f03384dbfd3b6c165
 INFO:   -skipping: ./.git/objects/4d/16aa399073f429b8390635381232250babd604
+INFO:   -skipping: ./.git/objects/72/95240cf750c14b0cbcf765c344cc8362fd28b2
 INFO:   -skipping: ./.git/objects/44/395193b8a7d3c6659a145b4dc3216d9bb89702
 INFO:   -skipping: ./.git/objects/2a/93a1c0aafd125581b65f02c6a5e60592f09f76
 INFO:   -skipping: ./.git/objects/88/4470b47d50f390fac457a6befcadac731c771a
@@ -27840,6 +27847,7 @@ INFO:   -skipping: ./.git/objects/b1/254870726e5f290bbf2166f02a4478cd368342
 INFO:   -skipping: ./.git/objects/dd/5780614391c055154471ec92f77ea1c3644a56
 INFO:   -skipping: ./.git/objects/b6/c49af49d8d14605f1d15f53b89c926ca4449fa
 INFO:   -skipping: ./.git/objects/a9/1606a08db5ece9af7352bb465a15ca9b5cad05
+INFO:   -skipping: ./.git/objects/aa/0a21962d62bac512910f8287ace6457e7842e2
 INFO:   -skipping: ./.git/objects/aa/b0ffb9616414211b264c97034b46c38e8ea05a
 INFO:   -skipping: ./.git/objects/af/e7fed79123735d5b2404a3c185282f1c3e848d
 INFO:   -skipping: ./.git/objects/b7/8f1422dbd55d2ece0da79f32d11d7d78efbe77
@@ -27856,6 +27864,7 @@ INFO:   -skipping: ./.git/objects/c2/085a34c1647dc689a0b24d031bcc2849779794
 INFO:   -skipping: ./.git/objects/cb/28c70734df8f1c7e294f6b5d4645531d015e03
 INFO:   -skipping: ./.git/objects/f8/bdcdf08508f6c8838059065751daf1a25eaef5
 INFO:   -skipping: ./.git/objects/83/782e00eab7290fbcd8710af0493d9042aae45a
+INFO:   -skipping: ./.git/objects/1b/cf0871a11a3bc85fdf1590e6a61e6218246c50
 INFO:   -skipping: ./.git/objects/48/e745650227c2149fc8e1c350af8a9e65c93b46
 INFO:   -skipping: ./.git/objects/1e/c09b2bb53fa4feec7b5fbf650351ae895fd59e
 INFO:   -skipping: ./.git/objects/84/1c57534d892414003e9f042450dabaf124a1d8
@@ -27953,15 +27962,15 @@ INFO:   +adding: ./.platform/hooks/postdeploy/99_restore_packagejson.sh
 INFO:  +adding: ./.platform/hooks/prebuild/
 INFO:   +adding: ./.platform/hooks/prebuild/01_npm_ci_and_build.sh
 INFO:   +adding: ./.platform/hooks/prebuild/enable-swap.sh
-INFO: Uploading archive to s3 location: tattoo-app/app-7dacb-260204_170235878465-stage-260204_170235878659.zip
+INFO: Uploading archive to s3 location: tattoo-app/app-1bcf-260204_171458489663-stage-260204_171458489843.zip
 Alert: The platform version that your environment is using isn't recommended. There's a recommended version in the same platform branch.
 
-Creating application version archive "app-7dacb-260204_170235878465-stage-260204_170235878659".
+Creating application version archive "app-1bcf-260204_171458489663-stage-260204_171458489843".
 Uploading: [--------------------------------------------------] 0% Uploading: [#########################-------------------------] 50% Uploading: [##################################################] 100% Done...
-INFO: Creating AppVersion app-7dacb-260204_170235878465-stage-260204_170235878659
-2026-02-04 23:02:46    INFO    Environment update is starting.
-2026-02-04 23:02:52    INFO    Deploying new version to instance(s).
-2026-02-04 23:02:57    WARN    Instance deployment: The deployment used the default Node.js version for your platform version instead of the Node.js version included in your 'package.json'.
-2026-02-04 23:04:21    INFO    Instance deployment completed successfully.
-2026-02-04 23:04:27    INFO    New application version was deployed to running EC2 instances.
-2026-02-04 23:04:28    INFO    Environment update completed successfully.
+INFO: Creating AppVersion app-1bcf-260204_171458489663-stage-260204_171458489843
+2026-02-04 23:15:12    INFO    Environment update is starting.
+2026-02-04 23:15:17    INFO    Deploying new version to instance(s).
+2026-02-04 23:15:21    WARN    Instance deployment: The deployment used the default Node.js version for your platform version instead of the Node.js version included in your 'package.json'.
+2026-02-04 23:16:46    INFO    Instance deployment completed successfully.
+2026-02-04 23:16:52    INFO    New application version was deployed to running EC2 instances.
+2026-02-04 23:16:52    INFO    Environment update completed successfully.

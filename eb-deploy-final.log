@@ -40,12 +40,14 @@ INFO:   +adding: ./gallery.html
 INFO:   +adding: ./eb-logs-all.txt
 INFO:   +adding: ./eb-logs.txt
 INFO:   -skipping: ./eb-deploy-diagnostic.log
+INFO:   -skipping: ./eb-deploy-consolidated.log
 INFO:   -skipping: ./.gitignore
 INFO:   +adding: ./package-lock.json
 INFO:   +adding: ./package.json
 INFO:   +adding: ./eb-upload2.json
 INFO:   -skipping: ./.env
 INFO:   +adding: ./book.html
+INFO:   -skipping: ./eb-deploy-final.log
 INFO:   +adding: ./eb-logs-after-policy.txt
 INFO:   -skipping: ./server.log.20260123172458.bak
 INFO:   +adding: ./run.err
@@ -27257,6 +27259,12 @@ INFO:   -skipping: ./.elasticbeanstalk/logs/260202_201216/i-043264f4a2ab71be8/va
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_201216/i-043264f4a2ab71be8/var/log/healthd
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_201216/i-043264f4a2ab71be8/var/log/nginx
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_201216/i-043264f4a2ab71be8/tmp
+INFO:   -skipping: ./.elasticbeanstalk/logs/260204_191436
+INFO:   -skipping: ./.elasticbeanstalk/logs/260204_191436/i-05fe85a59676697f0
+INFO:   -skipping: ./.elasticbeanstalk/logs/260204_191436/i-05fe85a59676697f0/var
+INFO:   -skipping: ./.elasticbeanstalk/logs/260204_191436/i-05fe85a59676697f0/var/log
+INFO:   -skipping: ./.elasticbeanstalk/logs/260204_191436/i-05fe85a59676697f0/var/log/healthd
+INFO:   -skipping: ./.elasticbeanstalk/logs/260204_191436/i-05fe85a59676697f0/var/log/nginx
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_233807
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_233807/i-03ed6aaea614b22bd
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_233807/i-03ed6aaea614b22bd/var
@@ -27969,15 +27977,15 @@ INFO:   +adding: ./.platform/hooks/postdeploy/99_restore_packagejson.sh
 INFO:  +adding: ./.platform/hooks/prebuild/
 INFO:   +adding: ./.platform/hooks/prebuild/01_npm_ci_and_build.sh
 INFO:   +adding: ./.platform/hooks/prebuild/enable-swap.sh
-INFO: Uploading archive to s3 location: tattoo-app/app-1bcf-260204_190201826481.zip
+INFO: Uploading archive to s3 location: tattoo-app/app-1bcf-260204_191956912870.zip
 Alert: The platform version that your environment is using isn't recommended. There's a recommended version in the same platform branch.
 
-Creating application version archive "app-1bcf-260204_190201826481".
+Creating application version archive "app-1bcf-260204_191956912870".
 Uploading: [--------------------------------------------------] 0% Uploading: [#########################-------------------------] 50% Uploading: [##################################################] 100% Done...
-INFO: Creating AppVersion app-1bcf-260204_190201826481
-2026-02-05 01:02:11    INFO    Environment update is starting.
-2026-02-05 01:02:16    INFO    Deploying new version to instance(s).
-2026-02-05 01:02:19    WARN    Instance deployment: The deployment used the default Node.js version for your platform version instead of the Node.js version included in your 'package.json'.
-2026-02-05 01:03:45    INFO    Instance deployment completed successfully.
-2026-02-05 01:03:50    INFO    New application version was deployed to running EC2 instances.
-2026-02-05 01:03:50    INFO    Environment update completed successfully.
+INFO: Creating AppVersion app-1bcf-260204_191956912870
+2026-02-05 01:20:10    INFO    Environment update is starting.
+2026-02-05 01:20:15    INFO    Deploying new version to instance(s).
+2026-02-05 01:20:19    WARN    Instance deployment: The deployment used the default Node.js version for your platform version instead of the Node.js version included in your 'package.json'.
+2026-02-05 01:21:45    INFO    Instance deployment completed successfully.
+2026-02-05 01:21:50    INFO    New application version was deployed to running EC2 instances.
+2026-02-05 01:21:50    INFO    Environment update completed successfully.

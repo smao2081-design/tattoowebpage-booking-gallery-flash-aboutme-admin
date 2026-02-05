@@ -19,6 +19,7 @@ INFO:   +adding: ./eb-upload-response.json
 INFO:   -skipping: ./eb-deploy-patch.log
 INFO:   -skipping: ./eb-deploy-clean.log
 INFO:   +adding: ./about.html
+INFO:   -skipping: ./eb-deploy-clean-2.log
 INFO:   +adding: ./eb-remote-logs.txt
 INFO:   +adding: ./postcss.config.mjs
 INFO:   -skipping: ./eb-deploy2.log
@@ -40,12 +41,14 @@ INFO:   +adding: ./gallery.html
 INFO:   +adding: ./eb-logs-all.txt
 INFO:   +adding: ./eb-logs.txt
 INFO:   -skipping: ./eb-deploy-diagnostic.log
+INFO:   -skipping: ./eb-deploy-consolidated.log
 INFO:   -skipping: ./.gitignore
 INFO:   +adding: ./package-lock.json
 INFO:   +adding: ./package.json
 INFO:   +adding: ./eb-upload2.json
 INFO:   -skipping: ./.env
 INFO:   +adding: ./book.html
+INFO:   -skipping: ./eb-deploy-final.log
 INFO:   +adding: ./eb-logs-after-policy.txt
 INFO:   -skipping: ./server.log.20260123172458.bak
 INFO:   +adding: ./run.err
@@ -27257,6 +27260,12 @@ INFO:   -skipping: ./.elasticbeanstalk/logs/260202_201216/i-043264f4a2ab71be8/va
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_201216/i-043264f4a2ab71be8/var/log/healthd
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_201216/i-043264f4a2ab71be8/var/log/nginx
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_201216/i-043264f4a2ab71be8/tmp
+INFO:   -skipping: ./.elasticbeanstalk/logs/260204_191436
+INFO:   -skipping: ./.elasticbeanstalk/logs/260204_191436/i-05fe85a59676697f0
+INFO:   -skipping: ./.elasticbeanstalk/logs/260204_191436/i-05fe85a59676697f0/var
+INFO:   -skipping: ./.elasticbeanstalk/logs/260204_191436/i-05fe85a59676697f0/var/log
+INFO:   -skipping: ./.elasticbeanstalk/logs/260204_191436/i-05fe85a59676697f0/var/log/healthd
+INFO:   -skipping: ./.elasticbeanstalk/logs/260204_191436/i-05fe85a59676697f0/var/log/nginx
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_233807
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_233807/i-03ed6aaea614b22bd
 INFO:   -skipping: ./.elasticbeanstalk/logs/260202_233807/i-03ed6aaea614b22bd/var
@@ -27759,6 +27768,7 @@ INFO:   -skipping: ./.git/objects/9d/79889457f2b6b95e8457ea5737b15a22e2ec3e
 INFO:   -skipping: ./.git/objects/9c/2447cbd893100eb53ad0ac9286c8351c177649
 INFO:   -skipping: ./.git/objects/9c/54887bfcbeebf1a7ed00d3937bc7cc283932ce
 INFO:   -skipping: ./.git/objects/b5/5fb96581f3c55f1671fc3fc9aab0ab46b1dd3b
+INFO:   -skipping: ./.git/objects/d9/ba052677303d1efa5b12875b2dead9adfd97fa
 INFO:   -skipping: ./.git/objects/ac/c89d5eae31efe1b970c0476215df632266911d
 INFO:   -skipping: ./.git/objects/ac/6625162bf418bad13b02f22b80d764e5a51374
 INFO:   -skipping: ./.git/objects/ad/cc8a45fccdb0a0f990d72011c9668a603b8c6e
@@ -27865,11 +27875,13 @@ INFO:   -skipping: ./.git/objects/e1/b9154ccbd96683b15c923cf36be6b60de99893
 INFO:   -skipping: ./.git/objects/cd/4291764bf17e987b7074d990e68cdc9ee43466
 INFO:   -skipping: ./.git/objects/cc/cf7f69262d381570c7c8976a1ea78c2d0e676d
 INFO:   -skipping: ./.git/objects/e6/39f8289dc763c48bef65f2e43978c25e1c92b6
+INFO:   -skipping: ./.git/objects/e6/23ed089d5a0aee2a2d612082c1037e358420c0
 INFO:   -skipping: ./.git/objects/e6/db40b1d568a2474cf704475bdf97a3649d7155
 INFO:   -skipping: ./.git/objects/f9/fac0ed8cd732dadefcb94174db25886d3945b8
 INFO:   -skipping: ./.git/objects/c2/085a34c1647dc689a0b24d031bcc2849779794
 INFO:   -skipping: ./.git/objects/cb/28c70734df8f1c7e294f6b5d4645531d015e03
 INFO:   -skipping: ./.git/objects/f8/bdcdf08508f6c8838059065751daf1a25eaef5
+INFO:   -skipping: ./.git/objects/ce/e667224b7c5b55e9e5cd99e5fb8e63c9795a19
 INFO:   -skipping: ./.git/objects/83/782e00eab7290fbcd8710af0493d9042aae45a
 INFO:   -skipping: ./.git/objects/1b/cf0871a11a3bc85fdf1590e6a61e6218246c50
 INFO:   -skipping: ./.git/objects/48/e745650227c2149fc8e1c350af8a9e65c93b46
@@ -27969,15 +27981,15 @@ INFO:   +adding: ./.platform/hooks/postdeploy/99_restore_packagejson.sh
 INFO:  +adding: ./.platform/hooks/prebuild/
 INFO:   +adding: ./.platform/hooks/prebuild/01_npm_ci_and_build.sh
 INFO:   +adding: ./.platform/hooks/prebuild/enable-swap.sh
-INFO: Uploading archive to s3 location: tattoo-app/app-1bcf-260204_190201826481.zip
+INFO: Uploading archive to s3 location: tattoo-app/app-cee6-260204_193632258155.zip
 Alert: The platform version that your environment is using isn't recommended. There's a recommended version in the same platform branch.
 
-Creating application version archive "app-1bcf-260204_190201826481".
+Creating application version archive "app-cee6-260204_193632258155".
 Uploading: [--------------------------------------------------] 0% Uploading: [#########################-------------------------] 50% Uploading: [##################################################] 100% Done...
-INFO: Creating AppVersion app-1bcf-260204_190201826481
-2026-02-05 01:02:11    INFO    Environment update is starting.
-2026-02-05 01:02:16    INFO    Deploying new version to instance(s).
-2026-02-05 01:02:19    WARN    Instance deployment: The deployment used the default Node.js version for your platform version instead of the Node.js version included in your 'package.json'.
-2026-02-05 01:03:45    INFO    Instance deployment completed successfully.
-2026-02-05 01:03:50    INFO    New application version was deployed to running EC2 instances.
-2026-02-05 01:03:50    INFO    Environment update completed successfully.
+INFO: Creating AppVersion app-cee6-260204_193632258155
+2026-02-05 01:36:41    INFO    Environment update is starting.
+2026-02-05 01:36:46    INFO    Deploying new version to instance(s).
+2026-02-05 01:36:51    WARN    Instance deployment: The deployment used the default Node.js version for your platform version instead of the Node.js version included in your 'package.json'.
+2026-02-05 01:38:11    INFO    Instance deployment completed successfully.
+2026-02-05 01:38:17    INFO    New application version was deployed to running EC2 instances.
+2026-02-05 01:38:17    INFO    Environment update completed successfully.
