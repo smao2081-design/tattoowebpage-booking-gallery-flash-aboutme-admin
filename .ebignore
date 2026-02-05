@@ -1,3 +1,17 @@
+# Exclude backup files from Elastic Beanstalk bundles
+*.bak
+**/*.bak
+server/server.js.bak
+
+# Exclude local environment files
+.env
+.env.*
+
+# Editor/temp files
+*~
+*.swp
+.vscode/
+.idea/
 # Exclude common heavy or local files
 node_modules/
 .elasticbeanstalk/
